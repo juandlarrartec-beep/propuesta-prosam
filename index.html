@@ -1044,6 +1044,79 @@
         @media (max-width: 480px) {
             .score-grid { grid-template-columns: 1fr; }
         }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  TOOLTIPS                                      */
+        /* ═══════════════════════════════════════════════ */
+        .tooltip {
+            position: relative;
+            cursor: help;
+            border-bottom: 1px dashed var(--teal-500);
+        }
+        .tip-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--teal-500);
+            color: var(--white);
+            font-size: 0.6rem;
+            font-weight: 800;
+            font-style: normal;
+            margin-left: 3px;
+            vertical-align: super;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+        .tooltip .tip-text {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            bottom: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--blue-900);
+            color: var(--white);
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.82rem;
+            line-height: 1.5;
+            width: 280px;
+            max-width: 90vw;
+            box-shadow: var(--shadow-lg);
+            z-index: 100;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            pointer-events: none;
+            font-weight: 400;
+            text-align: left;
+        }
+        .tooltip .tip-text::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: var(--blue-900);
+        }
+        .tooltip:hover .tip-text,
+        .tooltip:focus .tip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+        @media (max-width: 768px) {
+            .tooltip .tip-text {
+                left: 0;
+                transform: none;
+                width: 250px;
+            }
+            .tooltip .tip-text::after {
+                left: 20px;
+                transform: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1101,7 +1174,7 @@
             <div class="score-card good">
                 <div class="label">Performance</div>
                 <div class="value" data-target="100">0</div>
-                <div class="detail">Velocidad de carga excelente. Core Web Vitals perfectos.</div>
+                <div class="detail">Velocidad de carga excelente. <span class="tooltip">Core Web Vitals<span class="tip-icon">i</span><span class="tip-text">Métricas de Google que miden la experiencia del usuario: velocidad de carga, estabilidad visual e interactividad. Afectan directamente el posicionamiento.</span></span> perfectos.</div>
             </div>
             <div class="score-card bad">
                 <div class="label">SEO</div>
@@ -1127,7 +1200,7 @@
             </div>
             <div class="problem-item">
                 <span class="icon">&#10005;</span>
-                <span class="text">Sin schema markup MedicalOrganization — invisible para IAs</span>
+                <span class="text">Sin <span class="tooltip">schema markup<span class="tip-icon">i</span><span class="tip-text">Código especial que le dice a Google y a las IAs: "esto es un centro médico, está en esta dirección, ofrece estos servicios". Sin esto, los buscadores no entienden bien qué es PROSAM.</span></span> MedicalOrganization — invisible para IAs</span>
             </div>
             <div class="problem-item">
                 <span class="icon">&#10005;</span>
@@ -1190,13 +1263,13 @@
             </div>
             <div class="solucion-card reveal">
                 <div class="icon-wrap">&#128270;</div>
-                <h3>SEO + GEO</h3>
-                <p>Posicionamiento en Google y en IAs (ChatGPT, Gemini, Perplexity). Schema markup médico, keywords estratégicas, contenido citable.</p>
+                <h3><span class="tooltip">SEO<span class="tip-icon">i</span><span class="tip-text">Search Engine Optimization. Técnicas para que Google muestre tu sitio cuando alguien busca "psiquiatra CABA" o servicios similares.</span></span> + <span class="tooltip">GEO<span class="tip-icon">i</span><span class="tip-text">Generative Engine Optimization. Optimización para que las IAs como ChatGPT, Gemini o Perplexity recomienden a PROSAM cuando les preguntan por centros de salud mental.</span></span></h3>
+                <p>Posicionamiento en Google y en IAs (ChatGPT, Gemini, Perplexity). Código médico especializado, palabras clave estratégicas, contenido citable.</p>
             </div>
             <div class="solucion-card reveal">
                 <div class="icon-wrap">&#128241;</div>
                 <h3>Mobile-First</h3>
-                <p>68% de las busquedas de salud mental son desde celular. Cada pixel se disena primero para mobile, despues para desktop.</p>
+                <p>68% de las búsquedas de salud mental son desde celular. Cada píxel se diseña primero para celular, después para computadora.</p>
             </div>
         </div>
     </div>
@@ -1309,14 +1382,14 @@
             <div class="seo-block">
                 <h3>&#128269; SEO — Google</h3>
                 <ul class="seo-list">
-                    <li><span class="icon">&#10003;</span> Meta title y description únicos por página</li>
-                    <li><span class="icon">&#10003;</span> H1 con keyword + ubicación (ej: "Psiquiatra en CABA")</li>
-                    <li><span class="icon">&#10003;</span> URLs limpias y descriptivas</li>
-                    <li><span class="icon">&#10003;</span> Schema markup MedicalOrganization</li>
+                    <li><span class="icon">&#10003;</span> <span class="tooltip">Meta title y description<span class="tip-icon">i</span><span class="tip-text">El título y la descripción que Google muestra en los resultados de búsqueda. Sin esto, Google improvisa y el resultado se ve genérico.</span></span> únicos por página</li>
+                    <li><span class="icon">&#10003;</span> <span class="tooltip">H1<span class="tip-icon">i</span><span class="tip-text">El título principal de cada página. Google lo usa para entender de qué trata. Debe incluir el servicio y la ubicación.</span></span> con palabra clave + ubicación (ej: "Psiquiatra en CABA")</li>
+                    <li><span class="icon">&#10003;</span> <span class="tooltip">URLs limpias<span class="tip-icon">i</span><span class="tip-text">Direcciones web legibles como /psiquiatria en vez de /pagina?id=3. Google las posiciona mejor y los pacientes confían más.</span></span> y descriptivas</li>
+                    <li><span class="icon">&#10003;</span> <span class="tooltip">Schema markup<span class="tip-icon">i</span><span class="tip-text">Código especial que le dice a Google: "esto es un centro médico en CABA que ofrece psiquiatría, psicología y evaluación neurocognitiva".</span></span> MedicalOrganization</li>
                     <li><span class="icon">&#10003;</span> Velocidad menor a 3 segundos</li>
-                    <li><span class="icon">&#10003;</span> Mobile-first (Google indexa mobile primero)</li>
-                    <li><span class="icon">&#10003;</span> Google Business Profile vinculado</li>
-                    <li><span class="icon">&#10003;</span> Sitemap XML + robots.txt</li>
+                    <li><span class="icon">&#10003;</span> Mobile-first (Google prioriza la versión celular)</li>
+                    <li><span class="icon">&#10003;</span> <span class="tooltip">Google Business Profile<span class="tip-icon">i</span><span class="tip-text">La ficha de Google Maps con dirección, horarios, reseñas y fotos. Es lo primero que aparece cuando alguien busca "PROSAM" o centros cercanos.</span></span> vinculado</li>
+                    <li><span class="icon">&#10003;</span> <span class="tooltip">Sitemap XML<span class="tip-icon">i</span><span class="tip-text">Un archivo que le dice a Google exactamente qué páginas tiene el sitio para que las indexe más rápido.</span></span> + robots.txt</li>
                 </ul>
             </div>
             <div class="seo-block">
@@ -1324,10 +1397,10 @@
                 <ul class="seo-list">
                     <li><span class="icon">&#10003;</span> Contenido estructurado y citable</li>
                     <li><span class="icon">&#10003;</span> Respuestas claras a preguntas directas</li>
-                    <li><span class="icon">&#10003;</span> Datos factuales: trayectoria, servicios, ubicacion</li>
-                    <li><span class="icon">&#10003;</span> FAQs que las IAs pueden interpretar</li>
-                    <li><span class="icon">&#10003;</span> Schema markup rico para contexto</li>
-                    <li><span class="icon">&#10003;</span> Diferenciacion clara vs competencia</li>
+                    <li><span class="icon">&#10003;</span> Datos factuales: trayectoria, servicios, ubicación</li>
+                    <li><span class="icon">&#10003;</span> <span class="tooltip">FAQs<span class="tip-icon">i</span><span class="tip-text">Preguntas frecuentes con respuestas claras. Las IAs las usan directamente cuando alguien pregunta sobre salud mental en Buenos Aires.</span></span> que las IAs pueden interpretar</li>
+                    <li><span class="icon">&#10003;</span> Código médico especializado para contexto</li>
+                    <li><span class="icon">&#10003;</span> Diferenciación clara vs competencia</li>
                 </ul>
             </div>
         </div>
@@ -1397,33 +1470,33 @@
         <div class="timeline-wrap">
             <div class="timeline-item reveal">
                 <div class="week">Semana 1</div>
-                <h3>Kick-off y alineacion</h3>
+                <h3>Kick-off y alineación</h3>
                 <p>Reunión inicial, definición de alcance, recolección de textos, accesos y materiales. Resolución de pendientes clínicos.</p>
             </div>
             <div class="timeline-item reveal">
-                <div class="week">Semanas 2 - 3</div>
+                <div class="week">Semana 2</div>
                 <h3>Manual de Marca</h3>
                 <p>Rediseño de logo, definición de paleta, tipografías y guía de uso. Aprobación antes de avanzar con la web.</p>
             </div>
             <div class="timeline-item reveal">
-                <div class="week">Semanas 3 - 4</div>
+                <div class="week">Semanas 2 - 3</div>
                 <h3>Diseño Web</h3>
-                <p>Wireframes mobile-first, diseno visual con la marca nueva. Hero con overlay, tarjetas de servicios, landings individuales. Aprobación de diseños.</p>
+                <p>Wireframes <span class="tooltip">mobile-first<span class="tip-icon">i</span><span class="tip-text">Diseñar primero para celular, ya que la mayoría de las búsquedas de salud se hacen desde el teléfono.</span></span>, diseño visual con la marca nueva. Hero con overlay, tarjetas de servicios, landings individuales. Aprobación de diseños.</p>
             </div>
             <div class="timeline-item reveal">
-                <div class="week">Semanas 4 - 6</div>
+                <div class="week">Semanas 3 - 5</div>
                 <h3>Desarrollo</h3>
-                <p>Maquetación completa: home, páginas de menú, 7 landings de servicios, blog, formularios, WhatsApp flotante, mapa. Testing mobile y cross-browser.</p>
+                <p>Maquetación completa: home, páginas de menú, 7 <span class="tooltip">landings<span class="tip-icon">i</span><span class="tip-text">Páginas individuales optimizadas para cada servicio, diseñadas para aparecer en Google cuando alguien busca ese servicio.</span></span> de servicios, blog, formularios, WhatsApp flotante, mapa. Testing en celular y computadora.</p>
             </div>
             <div class="timeline-item reveal">
-                <div class="week">Semana 6 - 7</div>
+                <div class="week">Semana 5</div>
                 <h3>SEO + GEO</h3>
-                <p>Implementación técnica: meta tags, schema markup, alt texts, sitemap, Search Console, Google Business Profile, contenido GEO.</p>
+                <p>Implementación técnica: <span class="tooltip">meta tags y schema markup<span class="tip-icon">i</span><span class="tip-text">Información invisible en el código que le dice a Google qué tipo de negocio es, dónde está y qué ofrece. Mejora drásticamente la visibilidad en buscadores.</span></span>, textos alternativos en imágenes, mapa del sitio, Google Search Console, Google Business Profile, contenido optimizado para IAs.</p>
             </div>
             <div class="timeline-item reveal">
-                <div class="week">Semana 7 - 8</div>
+                <div class="week">Semana 6</div>
                 <h3>Lanzamiento</h3>
-                <p>QA final, migracion DNS, go-live, verificación de indexación, monitoreo de Core Web Vitals, ajustes post-lanzamiento.</p>
+                <p>Control de calidad final, migración de dominio, puesta en línea, verificación de indexación en Google, monitoreo de velocidad, ajustes post-lanzamiento.</p>
             </div>
         </div>
     </div>
@@ -1442,8 +1515,8 @@
             <div class="price-card featured">
                 <div class="tier">Paquete Base</div>
                 <h3>Web + Marca + SEO/GEO</h3>
-                <div class="price">$800 <span style="font-size:1rem;font-weight:400;opacity:0.5">USD</span></div>
-                <div class="price-note">Pago único — entrega en 8 semanas</div>
+                <div class="price">$600 <span style="font-size:1rem;font-weight:400;opacity:0.5">USD</span></div>
+                <div class="price-note">Pago único — entrega en 6 semanas</div>
                 <ul class="features">
                     <li><span class="icon">&#10003;</span> Página web completa (Home + 4 páginas + 7 landings + blog)</li>
                     <li><span class="icon">&#10003;</span> Manual de Marca (logo + paleta + tipografías + guía)</li>
@@ -1462,8 +1535,8 @@
             <h3>Servicios opcionales</h3>
             <div class="opcional-row">
                 <div class="info">
-                    <h4>Google Ads</h4>
-                    <p>Campañas Search CABA — psiquiatria, neurocognitiva, hospital de dia. Configuracion de conversiones.</p>
+                    <h4><span class="tooltip">Google Ads<span class="tip-icon">i</span><span class="tip-text">Publicidad paga en Google. Cuando alguien busca "psiquiatra CABA", tu centro aparece en los primeros resultados destacados. Solo pagás cuando hacen clic.</span></span></h4>
+                    <p>Campañas de búsqueda en CABA — psiquiatría, neurocognitiva, hospital de día. Configuración de medición de resultados.</p>
                 </div>
                 <div class="precio">$200 setup + $150/mes</div>
             </div>
@@ -1476,29 +1549,29 @@
             </div>
             <div class="opcional-row">
                 <div class="info">
-                    <h4>Blog / Content Marketing</h4>
-                    <p>Artículos SEO para posicionamiento organico. Contenido educativo sobre salud mental.</p>
+                    <h4>Blog / Contenido</h4>
+                    <p>Artículos optimizados para posicionamiento orgánico. Contenido educativo sobre salud mental que atrae pacientes desde Google.</p>
                 </div>
-                <div class="precio">$100/artículo o $300/mes</div>
+                <div class="precio">$80/artículo o $250/mes</div>
             </div>
             <div class="opcional-row">
                 <div class="info">
                     <h4>Agente IA — Recordatorios</h4>
-                    <p>Recordatorios automáticos de turnos, confirmaciones y cancelaciones via WhatsApp.</p>
+                    <p>Recordatorios automáticos de turnos, confirmaciones y cancelaciones vía WhatsApp. Funciona 24/7 sin intervención humana.</p>
                 </div>
-                <div class="precio">$150 setup + ~$20/mes</div>
+                <div class="precio">$250 setup + ~$30/mes</div>
             </div>
             <div class="opcional-row">
                 <div class="info">
                     <h4>Chat IA en Web</h4>
-                    <p>Bot de orientación en el sitio que deriva consultas al WhatsApp o formulario.</p>
+                    <p>Asistente inteligente en el sitio que responde consultas básicas y deriva al WhatsApp o formulario.</p>
                 </div>
-                <div class="precio">$100 setup + ~$15/mes</div>
+                <div class="precio">$200 setup + ~$25/mes</div>
             </div>
             <div class="opcional-row">
                 <div class="info">
-                    <h4>Formulario en Hero de Landings</h4>
-                    <p>Formulario embebido en cada landing de servicio (estilo Lopez Ibor). Aumenta conversion.</p>
+                    <h4>Formulario en Hero de <span class="tooltip">Landings<span class="tip-icon">i</span><span class="tip-text">Las páginas individuales de cada servicio. El formulario aparece directamente al entrar, sin que el paciente tenga que buscarlo.</span></span></h4>
+                    <p>Formulario embebido en cada página de servicio (estilo López Ibor). Reduce fricción y aumenta contactos.</p>
                 </div>
                 <div class="precio">$100</div>
             </div>
@@ -1507,14 +1580,14 @@
                     <h4>Agendamiento Web</h4>
                     <p>Sistema de turnos online con filtro de admisión para pacientes inactivos. Implementable cuando lo decidas.</p>
                 </div>
-                <div class="precio">$200 setup + $50/mes</div>
+                <div class="precio">$300 setup + $50/mes</div>
             </div>
             <div class="opcional-row">
                 <div class="info">
-                    <h4>CRM (GoHighLevel)</h4>
-                    <p>Gestión completa de pacientes, calendario, automatizaciones, embudos. Ecosistema 360.</p>
+                    <h4><span class="tooltip">CRM<span class="tip-icon">i</span><span class="tip-text">Sistema centralizado para gestionar pacientes: quién contactó, en qué estado está, historial de comunicación, calendario de turnos, todo en un solo lugar.</span></span> (GoHighLevel)</h4>
+                    <p>Gestión completa de pacientes, calendario, automatizaciones. Ecosistema integral.</p>
                 </div>
-                <div class="precio">$150 setup + $97/mes</div>
+                <div class="precio">$300 setup + $97/mes</div>
             </div>
         </div>
     </div>
