@@ -519,11 +519,17 @@
         .plataforma .section-label { color: var(--teal-300); }
         .plataforma .section-label .line { background: var(--teal-300); }
 
+        .platform-table-wrap {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-top: 2rem;
+            border-radius: var(--radius);
+        }
         .platform-table {
             width: 100%;
+            min-width: 600px;
             border-collapse: separate;
             border-spacing: 0;
-            margin-top: 2rem;
             overflow: hidden;
             border-radius: var(--radius);
             border: 1px solid rgba(255,255,255,0.1);
@@ -1052,13 +1058,13 @@
 <nav>
     <a href="#" class="nav-brand">Juan Larrarte</a>
     <ul class="nav-links">
-        <li><a href="#diagnostico">Diagnostico</a></li>
-        <li><a href="#solucion">Solucion</a></li>
+        <li><a href="#diagnostico">Diagnóstico</a></li>
+        <li><a href="#solucion">Solución</a></li>
         <li><a href="#plataforma">Plataforma</a></li>
         <li><a href="#arquitectura">Arquitectura</a></li>
         <li><a href="#seo">SEO + GEO</a></li>
         <li><a href="#timeline">Timeline</a></li>
-        <li><a href="#inversion">Inversion</a></li>
+        <li><a href="#inversion">Inversión</a></li>
         <li><a href="#contacto">Contacto</a></li>
     </ul>
     <button class="nav-toggle" aria-label="Menu">
@@ -1072,8 +1078,8 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
         <div class="hero-badge"><span class="dot"></span> Propuesta exclusiva</div>
-        <h1>Transformacion Digital para <span>Centro Medico PROSAM</span></h1>
-        <p>Una presencia digital que refleje 30 anos de trayectoria en salud mental. Diseno profesional, posicionamiento estrategico y tecnologia de punta.</p>
+        <h1>Transformación Digital para <span>Centro Médico PROSAM</span></h1>
+        <p>Una presencia digital que refleje 30 años de trayectoria en salud mental. Diseño profesional, posicionamiento estratégico y tecnología de punta.</p>
         <a href="#diagnostico" class="hero-cta">Explorar Propuesta &#8595;</a>
     </div>
     <div class="hero-scroll">
@@ -1086,7 +1092,7 @@
 <section class="diagnostico" id="diagnostico">
     <div class="section-container">
         <div class="reveal">
-            <div class="section-label"><span class="line"></span> Diagnostico actual</div>
+            <div class="section-label"><span class="line"></span> Diagnóstico actual</div>
             <h2 class="section-title">Estado de cmprosam.com.ar</h2>
             <p class="section-subtitle">Analizamos la web actual con herramientas profesionales. Los resultados revelan oportunidades claras de mejora.</p>
         </div>
@@ -1105,12 +1111,12 @@
             <div class="score-card bad">
                 <div class="label">Accesibilidad</div>
                 <div class="value" data-target="59">0</div>
-                <div class="detail">Imagenes sin descripcion, links sin texto descriptivo.</div>
+                <div class="detail">Imágenes sin descripción, links sin texto descriptivo.</div>
             </div>
             <div class="score-card warn">
-                <div class="label">Diseno</div>
+                <div class="label">Diseño</div>
                 <div class="value">2012</div>
-                <div class="detail">Template generico, sin identidad visual. Copyright desde 2012.</div>
+                <div class="detail">Template genérico, sin identidad visual. Copyright desde 2012.</div>
             </div>
         </div>
 
@@ -1125,11 +1131,11 @@
             </div>
             <div class="problem-item">
                 <span class="icon">&#10005;</span>
-                <span class="text">Contenido escaso — ~15 paginas con poco texto, sin blog</span>
+                <span class="text">Contenido escaso — ~15 páginas con poco texto, sin blog</span>
             </div>
             <div class="problem-item">
                 <span class="icon">&#10005;</span>
-                <span class="text">Diseno anticuado — no transmite profesionalismo acorde al centro</span>
+                <span class="text">Diseño anticuado — no transmite profesionalismo acorde al centro</span>
             </div>
             <div class="problem-item">
                 <span class="icon">&#10005;</span>
@@ -1144,7 +1150,7 @@
         <div class="counters reveal">
             <div class="counter-item">
                 <div class="number" data-target="30" data-suffix="+">0</div>
-                <div class="text">Anos de trayectoria</div>
+                <div class="text">Años de trayectoria</div>
             </div>
             <div class="counter-item">
                 <div class="number" data-target="7">0</div>
@@ -1152,7 +1158,7 @@
             </div>
             <div class="counter-item">
                 <div class="number" data-target="9">0</div>
-                <div class="text">Coberturas medicas</div>
+                <div class="text">Coberturas médicas</div>
             </div>
             <div class="counter-item">
                 <div class="number" data-target="3">0</div>
@@ -1166,7 +1172,7 @@
 <section id="solucion">
     <div class="section-container">
         <div class="reveal">
-            <div class="section-label"><span class="line"></span> Nuestra solucion</div>
+            <div class="section-label"><span class="line"></span> Nuestra solución</div>
             <h2 class="section-title">Lo que vamos a construir</h2>
             <p class="section-subtitle">Una presencia digital completa, profesional y optimizada para captar pacientes privados en CABA.</p>
         </div>
@@ -1175,17 +1181,17 @@
             <div class="solucion-card reveal">
                 <div class="icon-wrap">&#127760;</div>
                 <h3>Web Premium</h3>
-                <p>Sitio completo con home, 4 paginas principales, 7 landings de servicios optimizadas y blog. Diseno inspirado en Lopez Ibor con identidad propia.</p>
+                <p>Sitio completo con home, 4 páginas principales, 7 landings de servicios optimizadas y blog. Diseño inspirado en López Ibor con identidad propia.</p>
             </div>
             <div class="solucion-card reveal">
                 <div class="icon-wrap">&#127912;</div>
                 <h3>Manual de Marca</h3>
-                <p>Rediseno del logo, paleta de colores, tipografias y guia de uso. La base para toda la comunicacion visual de PROSAM.</p>
+                <p>Rediseño del logo, paleta de colores, tipografías y guía de uso. La base para toda la comunicación visual de PROSAM.</p>
             </div>
             <div class="solucion-card reveal">
                 <div class="icon-wrap">&#128270;</div>
                 <h3>SEO + GEO</h3>
-                <p>Posicionamiento en Google y en IAs (ChatGPT, Gemini, Perplexity). Schema markup medico, keywords estrategicas, contenido citable.</p>
+                <p>Posicionamiento en Google y en IAs (ChatGPT, Gemini, Perplexity). Schema markup médico, keywords estratégicas, contenido citable.</p>
             </div>
             <div class="solucion-card reveal">
                 <div class="icon-wrap">&#128241;</div>
@@ -1202,10 +1208,11 @@
         <div class="reveal">
             <div class="section-label"><span class="line"></span> Plataforma</div>
             <h2 class="section-title">WordPress o alternativa?</h2>
-            <p class="section-subtitle">Queremos ofrecerte la mejor opcion. Comparamos las plataformas disponibles para que puedas decidir con informacion.</p>
+            <p class="section-subtitle">Queremos ofrecerte la mejor opción. Comparamos las plataformas disponibles para que puedas decidir con información.</p>
         </div>
 
         <div class="reveal">
+            <div class="platform-table-wrap">
             <table class="platform-table">
                 <thead>
                     <tr>
@@ -1254,6 +1261,7 @@
                     </tr>
                 </tbody>
             </table>
+            </div>
         </div>
 
         <div class="platform-note reveal">
@@ -1272,17 +1280,17 @@
         </div>
 
         <div class="arq-tree">
-            <div class="arq-node home reveal"><span class="tag">Home</span><span class="name">Pagina Principal</span><span class="url">/</span></div>
+            <div class="arq-node home reveal"><span class="tag">Home</span><span class="name">Página Principal</span><span class="url">/</span></div>
             <div class="arq-node page reveal"><span class="tag">Menu</span><span class="name">Servicios</span><span class="url">/servicios</span></div>
             <div class="arq-node page reveal"><span class="tag">Menu</span><span class="name">Coberturas</span><span class="url">/coberturas</span></div>
             <div class="arq-node page reveal"><span class="tag">Menu</span><span class="name">Contacto</span><span class="url">/contacto</span></div>
             <div class="arq-node page reveal"><span class="tag">Footer</span><span class="name">Blog</span><span class="url">/blog</span></div>
-            <div class="arq-node landing reveal"><span class="tag">Landing</span><span class="name">Psiquiatria</span><span class="url">/psiquiatria</span></div>
-            <div class="arq-node landing reveal"><span class="tag">Landing</span><span class="name">Psicologia</span><span class="url">/psicologia</span></div>
-            <div class="arq-node landing reveal"><span class="tag">Landing</span><span class="name">Ninos y Adolescentes</span><span class="url">/ninos-y-adolescentes</span></div>
-            <div class="arq-node landing reveal"><span class="tag">Landing</span><span class="name">Hospital de Dia</span><span class="url">/hospital-de-dia</span></div>
-            <div class="arq-node landing reveal"><span class="tag">Landing</span><span class="name">Evaluacion Neurocognitiva</span><span class="url">/evaluacion-neurocognitiva</span></div>
-            <div class="arq-node landing reveal"><span class="tag">Landing</span><span class="name">Rehabilitacion Neurocognitiva</span><span class="url">/rehabilitacion-neurocognitiva</span></div>
+            <div class="arq-node landing reveal"><span class="tag">Landing</span><span class="name">Psiquiatría</span><span class="url">/psiquiatria</span></div>
+            <div class="arq-node landing reveal"><span class="tag">Landing</span><span class="name">Psicología</span><span class="url">/psicologia</span></div>
+            <div class="arq-node landing reveal"><span class="tag">Landing</span><span class="name">Niños y Adolescentes</span><span class="url">/ninos-y-adolescentes</span></div>
+            <div class="arq-node landing reveal"><span class="tag">Landing</span><span class="name">Hospital de Día</span><span class="url">/hospital-de-día</span></div>
+            <div class="arq-node landing reveal"><span class="tag">Landing</span><span class="name">Evaluación Neurocognitiva</span><span class="url">/evaluacion-neurocognitiva</span></div>
+            <div class="arq-node landing reveal"><span class="tag">Landing</span><span class="name">Rehabilitación Neurocognitiva</span><span class="url">/rehabilitacion-neurocognitiva</span></div>
             <div class="arq-node landing reveal"><span class="tag">Landing</span><span class="name">Taller de Memoria</span><span class="url">/taller-de-memoria</span></div>
         </div>
     </div>
@@ -1294,15 +1302,15 @@
         <div class="reveal">
             <div class="section-label"><span class="line"></span> Posicionamiento</div>
             <h2 class="section-title">SEO + GEO</h2>
-            <p class="section-subtitle">Posicionamiento en Google y en inteligencias artificiales. Dos canales de captacion que trabajan juntos.</p>
+            <p class="section-subtitle">Posicionamiento en Google y en inteligencias artificiales. Dos canales de captación que trabajan juntos.</p>
         </div>
 
         <div class="seo-columns reveal">
             <div class="seo-block">
                 <h3>&#128269; SEO — Google</h3>
                 <ul class="seo-list">
-                    <li><span class="icon">&#10003;</span> Meta title y description unicos por pagina</li>
-                    <li><span class="icon">&#10003;</span> H1 con keyword + ubicacion (ej: "Psiquiatra en CABA")</li>
+                    <li><span class="icon">&#10003;</span> Meta title y description únicos por página</li>
+                    <li><span class="icon">&#10003;</span> H1 con keyword + ubicación (ej: "Psiquiatra en CABA")</li>
                     <li><span class="icon">&#10003;</span> URLs limpias y descriptivas</li>
                     <li><span class="icon">&#10003;</span> Schema markup MedicalOrganization</li>
                     <li><span class="icon">&#10003;</span> Velocidad menor a 3 segundos</li>
@@ -1336,26 +1344,26 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Psiquiatria</strong></td>
+                        <td><strong>Psiquiatría</strong></td>
                         <td>psiquiatra CABA</td>
                         <td><span class="kw-badge high">Alta</span></td>
                         <td>Inmediata</td>
                     </tr>
                     <tr>
-                        <td><strong>Ninos y Adolescentes</strong></td>
-                        <td>psicologo ninos CABA</td>
+                        <td><strong>Niños y Adolescentes</strong></td>
+                        <td>psicólogo niños CABA</td>
                         <td><span class="kw-badge high">Alta</span></td>
                         <td>Inmediata</td>
                     </tr>
                     <tr>
-                        <td><strong>Evaluacion Neurocognitiva</strong></td>
-                        <td>evaluacion neurocognitiva Buenos Aires</td>
+                        <td><strong>Evaluación Neurocognitiva</strong></td>
+                        <td>evaluación neurocognitiva Buenos Aires</td>
                         <td><span class="kw-badge low">Baja</span></td>
                         <td><span class="kw-badge strategic">Estrategica</span></td>
                     </tr>
                     <tr>
-                        <td><strong>Rehabilitacion Neurocognitiva</strong></td>
-                        <td>rehabilitacion neurocognitiva CABA</td>
+                        <td><strong>Rehabilitación Neurocognitiva</strong></td>
+                        <td>rehabilitación neurocognitiva CABA</td>
                         <td><span class="kw-badge low">Baja</span></td>
                         <td><span class="kw-badge strategic">Estrategica</span></td>
                     </tr>
@@ -1366,8 +1374,8 @@
                         <td><span class="kw-badge strategic">Estrategica</span></td>
                     </tr>
                     <tr>
-                        <td><strong>Hospital de Dia</strong></td>
-                        <td>hospital de dia psiquiatrico Buenos Aires</td>
+                        <td><strong>Hospital de Día</strong></td>
+                        <td>hospital de día psiquiátrico Buenos Aires</td>
                         <td><span class="kw-badge medium">Media</span></td>
                         <td>Media</td>
                     </tr>
@@ -1390,32 +1398,32 @@
             <div class="timeline-item reveal">
                 <div class="week">Semana 1</div>
                 <h3>Kick-off y alineacion</h3>
-                <p>Reunion inicial, definicion de alcance, recoleccion de textos, accesos y materiales. Resolucion de pendientes clinicos.</p>
+                <p>Reunión inicial, definición de alcance, recolección de textos, accesos y materiales. Resolución de pendientes clínicos.</p>
             </div>
             <div class="timeline-item reveal">
                 <div class="week">Semanas 2 - 3</div>
                 <h3>Manual de Marca</h3>
-                <p>Rediseno de logo, definicion de paleta, tipografias y guia de uso. Aprobacion antes de avanzar con la web.</p>
+                <p>Rediseño de logo, definición de paleta, tipografías y guía de uso. Aprobación antes de avanzar con la web.</p>
             </div>
             <div class="timeline-item reveal">
                 <div class="week">Semanas 3 - 4</div>
-                <h3>Diseno Web</h3>
-                <p>Wireframes mobile-first, diseno visual con la marca nueva. Hero con overlay, tarjetas de servicios, landings individuales. Aprobacion de disenos.</p>
+                <h3>Diseño Web</h3>
+                <p>Wireframes mobile-first, diseno visual con la marca nueva. Hero con overlay, tarjetas de servicios, landings individuales. Aprobación de diseños.</p>
             </div>
             <div class="timeline-item reveal">
                 <div class="week">Semanas 4 - 6</div>
                 <h3>Desarrollo</h3>
-                <p>Maquetacion completa: home, paginas de menu, 7 landings de servicios, blog, formularios, WhatsApp flotante, mapa. Testing mobile y cross-browser.</p>
+                <p>Maquetación completa: home, páginas de menú, 7 landings de servicios, blog, formularios, WhatsApp flotante, mapa. Testing mobile y cross-browser.</p>
             </div>
             <div class="timeline-item reveal">
                 <div class="week">Semana 6 - 7</div>
                 <h3>SEO + GEO</h3>
-                <p>Implementacion tecnica: meta tags, schema markup, alt texts, sitemap, Search Console, Google Business Profile, contenido GEO.</p>
+                <p>Implementación técnica: meta tags, schema markup, alt texts, sitemap, Search Console, Google Business Profile, contenido GEO.</p>
             </div>
             <div class="timeline-item reveal">
                 <div class="week">Semana 7 - 8</div>
                 <h3>Lanzamiento</h3>
-                <p>QA final, migracion DNS, go-live, verificacion de indexacion, monitoreo de Core Web Vitals, ajustes post-lanzamiento.</p>
+                <p>QA final, migracion DNS, go-live, verificación de indexación, monitoreo de Core Web Vitals, ajustes post-lanzamiento.</p>
             </div>
         </div>
     </div>
@@ -1425,7 +1433,7 @@
 <section class="pricing-section" id="inversion">
     <div class="section-container">
         <div class="reveal">
-            <div class="section-label"><span class="line"></span> Inversion</div>
+            <div class="section-label"><span class="line"></span> Inversión</div>
             <h2 class="section-title">Paquetes y precios</h2>
             <p class="section-subtitle">Transparencia total. Un paquete base con todo lo esencial y opcionales que podes sumar cuando quieras.</p>
         </div>
@@ -1435,16 +1443,16 @@
                 <div class="tier">Paquete Base</div>
                 <h3>Web + Marca + SEO/GEO</h3>
                 <div class="price">$800 <span style="font-size:1rem;font-weight:400;opacity:0.5">USD</span></div>
-                <div class="price-note">Pago unico — entrega en 8 semanas</div>
+                <div class="price-note">Pago único — entrega en 8 semanas</div>
                 <ul class="features">
-                    <li><span class="icon">&#10003;</span> Pagina web completa (Home + 4 paginas + 7 landings + blog)</li>
-                    <li><span class="icon">&#10003;</span> Manual de Marca (logo + paleta + tipografias + guia)</li>
-                    <li><span class="icon">&#10003;</span> SEO tecnico completo</li>
-                    <li><span class="icon">&#10003;</span> Optimizacion GEO (IAs)</li>
+                    <li><span class="icon">&#10003;</span> Página web completa (Home + 4 páginas + 7 landings + blog)</li>
+                    <li><span class="icon">&#10003;</span> Manual de Marca (logo + paleta + tipografías + guía)</li>
+                    <li><span class="icon">&#10003;</span> SEO técnico completo</li>
+                    <li><span class="icon">&#10003;</span> Optimización GEO (IAs)</li>
                     <li><span class="icon">&#10003;</span> Formulario de contacto con dropdown</li>
                     <li><span class="icon">&#10003;</span> WhatsApp flotante con mensaje prellenado</li>
                     <li><span class="icon">&#10003;</span> Mobile-first responsive</li>
-                    <li><span class="icon">&#10003;</span> Google Maps en pagina de contacto</li>
+                    <li><span class="icon">&#10003;</span> Google Maps en página de contacto</li>
                     <li><span class="icon">&#10003;</span> Google Search Console configurado</li>
                 </ul>
             </div>
@@ -1455,35 +1463,35 @@
             <div class="opcional-row">
                 <div class="info">
                     <h4>Google Ads</h4>
-                    <p>Campanas Search CABA — psiquiatria, neurocognitiva, hospital de dia. Configuracion de conversiones.</p>
+                    <p>Campañas Search CABA — psiquiatria, neurocognitiva, hospital de dia. Configuracion de conversiones.</p>
                 </div>
                 <div class="precio">$200 setup + $150/mes</div>
             </div>
             <div class="opcional-row">
                 <div class="info">
                     <h4>Redes Sociales</h4>
-                    <p>Estrategia + creacion de contenido Instagram y Facebook. Publicaciones regulares con identidad de marca.</p>
+                    <p>Estrategia + creación de contenido Instagram y Facebook. Publicaciones regulares con identidad de marca.</p>
                 </div>
                 <div class="precio">$350/mes</div>
             </div>
             <div class="opcional-row">
                 <div class="info">
                     <h4>Blog / Content Marketing</h4>
-                    <p>Articulos SEO para posicionamiento organico. Contenido educativo sobre salud mental.</p>
+                    <p>Artículos SEO para posicionamiento organico. Contenido educativo sobre salud mental.</p>
                 </div>
-                <div class="precio">$100/articulo o $300/mes</div>
+                <div class="precio">$100/artículo o $300/mes</div>
             </div>
             <div class="opcional-row">
                 <div class="info">
                     <h4>Agente IA — Recordatorios</h4>
-                    <p>Recordatorios automaticos de turnos, confirmaciones y cancelaciones via WhatsApp.</p>
+                    <p>Recordatorios automáticos de turnos, confirmaciones y cancelaciones via WhatsApp.</p>
                 </div>
                 <div class="precio">$150 setup + ~$20/mes</div>
             </div>
             <div class="opcional-row">
                 <div class="info">
                     <h4>Chat IA en Web</h4>
-                    <p>Bot de orientacion en el sitio que deriva consultas al WhatsApp o formulario.</p>
+                    <p>Bot de orientación en el sitio que deriva consultas al WhatsApp o formulario.</p>
                 </div>
                 <div class="precio">$100 setup + ~$15/mes</div>
             </div>
@@ -1497,14 +1505,14 @@
             <div class="opcional-row">
                 <div class="info">
                     <h4>Agendamiento Web</h4>
-                    <p>Sistema de turnos online con filtro de admision para pacientes inactivos. Implementable cuando lo decidas.</p>
+                    <p>Sistema de turnos online con filtro de admisión para pacientes inactivos. Implementable cuando lo decidas.</p>
                 </div>
                 <div class="precio">$200 setup + $50/mes</div>
             </div>
             <div class="opcional-row">
                 <div class="info">
                     <h4>CRM (GoHighLevel)</h4>
-                    <p>Gestion completa de pacientes, calendario, automatizaciones, embudos. Ecosistema 360.</p>
+                    <p>Gestión completa de pacientes, calendario, automatizaciones, embudos. Ecosistema 360.</p>
                 </div>
                 <div class="precio">$150 setup + $97/mes</div>
             </div>
@@ -1517,7 +1525,7 @@
     <div class="section-container">
         <div class="reveal">
             <div class="section-label"><span class="line"></span> Portfolio</div>
-            <h2 class="section-title">Proyectos en produccion</h2>
+            <h2 class="section-title">Proyectos en producción</h2>
             <p class="section-subtitle">Algunos de los proyectos que estamos desarrollando y gestionando actualmente.</p>
         </div>
 
@@ -1526,7 +1534,7 @@
                 <div class="image" style="background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);"></div>
                 <div class="body">
                     <h3>Centro Antoa</h3>
-                    <p>Centro estetico en Uruguay. Servicio 360: marca, web, Meta Ads, CRM con 4 agentes IA (asesoramiento, servicios, cobros, agendamiento). Ecosistema completo.</p>
+                    <p>Centro estético en Uruguay. Servicio 360: marca, web, Meta Ads, CRM con 4 agentes IA (asesoramiento, servicios, cobros, agendamiento). Ecosistema completo.</p>
                     <div class="tags">
                         <span class="tag">GoHighLevel</span>
                         <span class="tag">Meta Ads</span>
@@ -1572,7 +1580,7 @@
             <h2 class="section-title">Empecemos</h2>
             <p>El siguiente paso es una reunion de 30 minutos donde te mostramos el ecosistema completo, resolvemos dudas y cerramos el alcance.</p>
             <a href="https://wa.me/59899000000?text=Hola%20Juan%2C%20vi%20la%20propuesta%20de%20PROSAM%20y%20me%20interesa%20coordinar%20una%20reunion" class="cta-button" target="_blank">
-                Coordinar Reunion &#8594;
+                Coordinar Reunión &#8594;
             </a>
         </div>
     </div>
