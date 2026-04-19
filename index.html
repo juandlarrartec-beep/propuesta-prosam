@@ -1,0 +1,1761 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Digital — Centro Médico PROSAM</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ═══════════════════════════════════════════════ */
+        /*  RESET & BASE                                  */
+        /* ═══════════════════════════════════════════════ */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --blue-900: #0A1628;
+            --blue-800: #0F2342;
+            --blue-700: #142E54;
+            --blue-600: #1B3A6B;
+            --blue-500: #2A5298;
+            --blue-400: #4A7BC8;
+            --blue-300: #7BA3E0;
+            --blue-200: #B4CEF0;
+            --blue-100: #E8F0FE;
+            --teal-500: #089D97;
+            --teal-400: #0CB8B0;
+            --teal-300: #7DBBB0;
+            --gold-500: #D4A853;
+            --gold-400: #E8C068;
+            --gold-300: #F0D88A;
+            --white: #FFFFFF;
+            --gray-50: #F8FAFB;
+            --gray-100: #F1F4F8;
+            --gray-200: #E2E8F0;
+            --gray-300: #CBD5E1;
+            --gray-400: #94A3B8;
+            --gray-500: #64748B;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1E293B;
+            --red-500: #EF4444;
+            --green-500: #22C55E;
+            --amber-500: #F59E0B;
+            --radius: 16px;
+            --radius-sm: 8px;
+            --radius-lg: 24px;
+            --shadow-sm: 0 1px 3px rgba(10,22,40,0.08);
+            --shadow-md: 0 4px 20px rgba(10,22,40,0.1);
+            --shadow-lg: 0 10px 40px rgba(10,22,40,0.12);
+            --shadow-xl: 0 20px 60px rgba(10,22,40,0.15);
+            --glass: rgba(255,255,255,0.08);
+            --glass-border: rgba(255,255,255,0.12);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--gray-800);
+            background: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  LOADING SCREEN                                */
+        /* ═══════════════════════════════════════════════ */
+        #loader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: var(--blue-900);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+        #loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+        .loader-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 0.08em;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: loaderFadeIn 0.8s ease 0.2s forwards;
+        }
+        .loader-bar {
+            width: 200px;
+            height: 3px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            opacity: 0;
+            animation: loaderFadeIn 0.5s ease 0.5s forwards;
+        }
+        .loader-bar::after {
+            content: '';
+            display: block;
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--teal-400), var(--blue-400));
+            border-radius: 4px;
+            animation: loaderProgress 1.5s ease 0.6s forwards;
+        }
+        @keyframes loaderFadeIn { to { opacity: 1; } }
+        @keyframes loaderProgress { to { width: 100%; } }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  NAVIGATION                                    */
+        /* ═══════════════════════════════════════════════ */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+            background: transparent;
+        }
+        nav.scrolled {
+            background: rgba(10,22,40,0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0.75rem 2rem;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.2);
+        }
+        .nav-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 0.03em;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--teal-400);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--white); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                height: 100vh;
+                background: var(--blue-900);
+                flex-direction: column;
+                padding: 5rem 2rem;
+                gap: 1.5rem;
+                transition: right 0.4s ease;
+            }
+            .nav-links.open { right: 0; }
+            .nav-toggle { display: flex; z-index: 1001; }
+        }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  HERO                                          */
+        /* ═══════════════════════════════════════════════ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--blue-900);
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        .hero-bg canvas { width: 100%; height: 100%; }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(10,22,40,0.88) 0%, rgba(27,58,107,0.75) 50%, rgba(8,157,151,0.4) 100%);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            max-width: 900px;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.25rem;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 100px;
+            color: var(--teal-300);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .hero-badge .dot {
+            width: 6px; height: 6px;
+            background: var(--teal-400);
+            border-radius: 50%;
+            animation: pulse 2s ease infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.5); }
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--teal-400), var(--blue-300));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: rgba(255,255,255,0.7);
+            max-width: 650px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--teal-500), var(--teal-400));
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 100px;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 20px rgba(8,157,151,0.3);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .hero-cta:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 30px rgba(8,157,151,0.4);
+        }
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            animation: float 3s ease infinite;
+        }
+        .hero-scroll .line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  SECTIONS COMMON                               */
+        /* ═══════════════════════════════════════════════ */
+        section {
+            padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 5vw, 4rem);
+        }
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--teal-500);
+            margin-bottom: 1rem;
+        }
+        .section-label .line {
+            width: 24px; height: 2px;
+            background: var(--teal-500);
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--blue-900);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-500);
+            max-width: 600px;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  DIAGNÓSTICO                                   */
+        /* ═══════════════════════════════════════════════ */
+        .diagnostico { background: var(--gray-50); }
+
+        .score-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .score-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-200);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .score-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        .score-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+        .score-card.good::before { background: var(--green-500); }
+        .score-card.bad::before { background: var(--red-500); }
+        .score-card.warn::before { background: var(--amber-500); }
+
+        .score-card .label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--gray-400);
+            margin-bottom: 0.75rem;
+        }
+        .score-card .value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .score-card.good .value { color: var(--green-500); }
+        .score-card.bad .value { color: var(--red-500); }
+        .score-card.warn .value { color: var(--amber-500); }
+        .score-card .detail {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            line-height: 1.5;
+        }
+
+        .problems-list {
+            margin-top: 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        .problem-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 1rem 1.25rem;
+            background: var(--white);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--red-500);
+        }
+        .problem-item .icon { font-size: 1.2rem; flex-shrink: 0; }
+        .problem-item .text { font-size: 0.9rem; color: var(--gray-600); }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  SOLUCIÓN                                      */
+        /* ═══════════════════════════════════════════════ */
+        .solucion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .solucion-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2.5rem 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-100);
+            transition: all 0.5s ease;
+            position: relative;
+        }
+        .solucion-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+        }
+        .solucion-card .icon-wrap {
+            width: 56px; height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .solucion-card:nth-child(1) .icon-wrap { background: linear-gradient(135deg, var(--blue-100), var(--blue-200)); }
+        .solucion-card:nth-child(2) .icon-wrap { background: linear-gradient(135deg, #E0F2F1, #B2DFDB); }
+        .solucion-card:nth-child(3) .icon-wrap { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); }
+        .solucion-card:nth-child(4) .icon-wrap { background: linear-gradient(135deg, #F3E5F5, #E1BEE7); }
+        .solucion-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--blue-900);
+            margin-bottom: 0.75rem;
+        }
+        .solucion-card p {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            line-height: 1.7;
+        }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  PLATAFORMA                                    */
+        /* ═══════════════════════════════════════════════ */
+        .plataforma { background: var(--blue-900); color: var(--white); }
+        .plataforma .section-title { color: var(--white); }
+        .plataforma .section-subtitle { color: rgba(255,255,255,0.6); }
+        .plataforma .section-label { color: var(--teal-300); }
+        .plataforma .section-label .line { background: var(--teal-300); }
+
+        .platform-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 2rem;
+            overflow: hidden;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .platform-table th {
+            padding: 1.25rem 1.5rem;
+            text-align: left;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            background: rgba(255,255,255,0.06);
+            color: var(--teal-300);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .platform-table td {
+            padding: 1rem 1.5rem;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .platform-table tr:last-child td { border-bottom: none; }
+        .platform-table .highlight-col {
+            background: rgba(8,157,151,0.08);
+            border-left: 2px solid var(--teal-500);
+        }
+        .platform-table .check { color: var(--green-500); }
+        .platform-table .warn { color: var(--amber-500); }
+        .platform-table .cross { color: var(--red-500); }
+
+        .platform-note {
+            margin-top: 2rem;
+            padding: 1.5rem 2rem;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--radius);
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.7;
+        }
+        .platform-note strong { color: var(--teal-300); }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  ARQUITECTURA                                  */
+        /* ═══════════════════════════════════════════════ */
+        .arq-tree {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .arq-node {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.5rem;
+            background: var(--white);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        .arq-node:hover {
+            background: var(--blue-100);
+            border-color: var(--blue-300);
+            transform: translateX(4px);
+        }
+        .arq-node.home { border-left: 4px solid var(--blue-500); }
+        .arq-node.page { border-left: 4px solid var(--teal-500); margin-left: 1.5rem; }
+        .arq-node.landing { border-left: 4px solid var(--gold-500); margin-left: 3rem; }
+        .arq-node .tag {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.2rem 0.6rem;
+            border-radius: 100px;
+        }
+        .arq-node.home .tag { background: var(--blue-100); color: var(--blue-600); }
+        .arq-node.page .tag { background: #E0F2F1; color: var(--teal-500); }
+        .arq-node.landing .tag { background: #FFF8E1; color: #B8860B; }
+        .arq-node .name { font-weight: 600; font-size: 0.9rem; color: var(--gray-800); }
+        .arq-node .url { font-size: 0.8rem; color: var(--gray-400); font-family: monospace; }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  SEO + GEO                                     */
+        /* ═══════════════════════════════════════════════ */
+        .seo-section { background: var(--gray-50); }
+
+        .seo-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        @media (max-width: 768px) { .seo-columns { grid-template-columns: 1fr; } }
+
+        .seo-block h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--blue-900);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .seo-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .seo-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+        .seo-list .icon { color: var(--teal-500); flex-shrink: 0; font-weight: 700; }
+
+        .keywords-table {
+            width: 100%;
+            margin-top: 2rem;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .keywords-table th {
+            padding: 1rem 1.25rem;
+            text-align: left;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            background: var(--blue-900);
+            color: var(--teal-300);
+        }
+        .keywords-table td {
+            padding: 0.85rem 1.25rem;
+            font-size: 0.88rem;
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .keywords-table tr:last-child td { border-bottom: none; }
+        .kw-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+        .kw-badge.high { background: #FEE2E2; color: #DC2626; }
+        .kw-badge.medium { background: #FEF3C7; color: #D97706; }
+        .kw-badge.low { background: #D1FAE5; color: #059669; }
+        .kw-badge.strategic { background: var(--blue-100); color: var(--blue-600); }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  TIMELINE                                      */
+        /* ═══════════════════════════════════════════════ */
+        .timeline-wrap {
+            position: relative;
+            margin-top: 3rem;
+            padding-left: 3rem;
+        }
+        .timeline-wrap::before {
+            content: '';
+            position: absolute;
+            left: 14px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--teal-400), var(--blue-400), var(--blue-200));
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding: 1.5rem 2rem;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-200);
+            transition: all 0.4s ease;
+        }
+        .timeline-item:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateX(4px);
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.38rem;
+            top: 1.75rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--teal-400);
+            border: 3px solid var(--white);
+            box-shadow: 0 0 0 2px var(--teal-400);
+        }
+        .timeline-item .week {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--teal-500);
+            margin-bottom: 0.5rem;
+        }
+        .timeline-item h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--blue-900);
+            margin-bottom: 0.5rem;
+        }
+        .timeline-item p {
+            font-size: 0.88rem;
+            color: var(--gray-500);
+            line-height: 1.7;
+        }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  PRICING                                       */
+        /* ═══════════════════════════════════════════════ */
+        .pricing-section { background: var(--blue-900); color: var(--white); }
+        .pricing-section .section-title { color: var(--white); }
+        .pricing-section .section-subtitle { color: rgba(255,255,255,0.6); }
+        .pricing-section .section-label { color: var(--teal-300); }
+        .pricing-section .section-label .line { background: var(--teal-300); }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .price-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 2rem;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .price-card:hover {
+            transform: translateY(-6px);
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(255,255,255,0.15);
+        }
+        .price-card.featured {
+            background: rgba(8,157,151,0.08);
+            border-color: var(--teal-500);
+        }
+        .price-card.featured::before {
+            content: 'RECOMENDADO';
+            position: absolute;
+            top: 1.25rem;
+            right: -2rem;
+            transform: rotate(45deg);
+            background: var(--teal-500);
+            color: var(--white);
+            font-size: 0.6rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            padding: 0.3rem 3rem;
+        }
+        .price-card .tier {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--teal-300);
+            margin-bottom: 0.5rem;
+        }
+        .price-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        .price-card .price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+        .price-card .price-note {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 2rem;
+        }
+        .price-card .features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+        .price-card .features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.7);
+        }
+        .price-card .features .icon { color: var(--teal-400); flex-shrink: 0; }
+
+        /* Opcionales table */
+        .opcionales-wrap {
+            margin-top: 3rem;
+        }
+        .opcionales-wrap h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+        .opcional-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            transition: background 0.3s ease;
+        }
+        .opcional-row:hover { background: rgba(255,255,255,0.03); }
+        .opcional-row:last-child { border-bottom: none; }
+        .opcional-row .info h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.25rem;
+        }
+        .opcional-row .info p {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.45);
+        }
+        .opcional-row .precio {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--teal-300);
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  PORTFOLIO                                     */
+        /* ═══════════════════════════════════════════════ */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .portfolio-card {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.5s ease;
+            background: var(--white);
+        }
+        .portfolio-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+        }
+        .portfolio-card .image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .portfolio-card .image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(10,22,40,0.8));
+        }
+        .portfolio-card .body {
+            padding: 1.5rem;
+        }
+        .portfolio-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--blue-900);
+            margin-bottom: 0.5rem;
+        }
+        .portfolio-card p {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+        .portfolio-card .tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        .portfolio-card .tag {
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.25rem 0.6rem;
+            border-radius: 100px;
+            background: var(--blue-100);
+            color: var(--blue-600);
+        }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  CTA / FOOTER                                  */
+        /* ═══════════════════════════════════════════════ */
+        .cta-section {
+            background: linear-gradient(135deg, var(--blue-800), var(--blue-900));
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(8,157,151,0.1) 0%, transparent 50%);
+        }
+        .cta-section .section-container { position: relative; z-index: 1; }
+        .cta-section .section-title { color: var(--white); }
+        .cta-section p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.6);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+        }
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.15rem 3rem;
+            background: linear-gradient(135deg, var(--teal-500), var(--teal-400));
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            border-radius: 100px;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 20px rgba(8,157,151,0.3);
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(8,157,151,0.5);
+        }
+
+        .footer {
+            background: var(--blue-900);
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .footer p {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.3);
+        }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  COUNTERS                                      */
+        /* ═══════════════════════════════════════════════ */
+        .counters {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            padding: 2.5rem 0;
+            border-top: 1px solid var(--gray-200);
+            border-bottom: 1px solid var(--gray-200);
+        }
+        @media (max-width: 768px) { .counters { grid-template-columns: repeat(2, 1fr); } }
+
+        .counter-item { text-align: center; }
+        .counter-item .number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--blue-600);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .counter-item .text {
+            font-size: 0.82rem;
+            color: var(--gray-400);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 600;
+        }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  RESPONSIVE OVERRIDES                          */
+        /* ═══════════════════════════════════════════════ */
+        @media (max-width: 768px) {
+            .pricing-grid { grid-template-columns: 1fr; }
+            .score-grid { grid-template-columns: 1fr 1fr; }
+            .platform-table { font-size: 0.8rem; }
+            .platform-table th, .platform-table td { padding: 0.75rem 0.75rem; }
+            .opcional-row { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+            .arq-node.page { margin-left: 1rem; }
+            .arq-node.landing { margin-left: 2rem; }
+            .counters { gap: 1.5rem; }
+            .counter-item .number { font-size: 2rem; }
+        }
+        @media (max-width: 480px) {
+            .score-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+    <div class="loader-logo">PROSAM</div>
+    <div class="loader-bar"></div>
+</div>
+
+<!-- NAV -->
+<nav>
+    <a href="#" class="nav-brand">Juan Larrarte</a>
+    <ul class="nav-links">
+        <li><a href="#diagnostico">Diagnostico</a></li>
+        <li><a href="#solucion">Solucion</a></li>
+        <li><a href="#plataforma">Plataforma</a></li>
+        <li><a href="#arquitectura">Arquitectura</a></li>
+        <li><a href="#seo">SEO + GEO</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#inversion">Inversion</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-bg"><canvas id="hero-canvas"></canvas></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="hero-badge"><span class="dot"></span> Propuesta exclusiva</div>
+        <h1>Transformacion Digital para <span>Centro Medico PROSAM</span></h1>
+        <p>Una presencia digital que refleje 30 anos de trayectoria en salud mental. Diseno profesional, posicionamiento estrategico y tecnologia de punta.</p>
+        <a href="#diagnostico" class="hero-cta">Explorar Propuesta &#8595;</a>
+    </div>
+    <div class="hero-scroll">
+        <span>Scroll</span>
+        <div class="line"></div>
+    </div>
+</section>
+
+<!-- DIAGNÓSTICO -->
+<section class="diagnostico" id="diagnostico">
+    <div class="section-container">
+        <div class="reveal">
+            <div class="section-label"><span class="line"></span> Diagnostico actual</div>
+            <h2 class="section-title">Estado de cmprosam.com.ar</h2>
+            <p class="section-subtitle">Analizamos la web actual con herramientas profesionales. Los resultados revelan oportunidades claras de mejora.</p>
+        </div>
+
+        <div class="score-grid reveal">
+            <div class="score-card good">
+                <div class="label">Performance</div>
+                <div class="value" data-target="100">0</div>
+                <div class="detail">Velocidad de carga excelente. Core Web Vitals perfectos.</div>
+            </div>
+            <div class="score-card bad">
+                <div class="label">SEO</div>
+                <div class="value" data-target="75">0</div>
+                <div class="detail">Sin meta descriptions, sin schema markup, sin alt tags.</div>
+            </div>
+            <div class="score-card bad">
+                <div class="label">Accesibilidad</div>
+                <div class="value" data-target="59">0</div>
+                <div class="detail">Imagenes sin descripcion, links sin texto descriptivo.</div>
+            </div>
+            <div class="score-card warn">
+                <div class="label">Diseno</div>
+                <div class="value">2012</div>
+                <div class="detail">Template generico, sin identidad visual. Copyright desde 2012.</div>
+            </div>
+        </div>
+
+        <div class="problems-list reveal">
+            <div class="problem-item">
+                <span class="icon">&#10005;</span>
+                <span class="text">Sin meta descriptions — Google no sabe que mostrar como snippet</span>
+            </div>
+            <div class="problem-item">
+                <span class="icon">&#10005;</span>
+                <span class="text">Sin schema markup MedicalOrganization — invisible para IAs</span>
+            </div>
+            <div class="problem-item">
+                <span class="icon">&#10005;</span>
+                <span class="text">Contenido escaso — ~15 paginas con poco texto, sin blog</span>
+            </div>
+            <div class="problem-item">
+                <span class="icon">&#10005;</span>
+                <span class="text">Diseno anticuado — no transmite profesionalismo acorde al centro</span>
+            </div>
+            <div class="problem-item">
+                <span class="icon">&#10005;</span>
+                <span class="text">Sin optimizacion GEO — las IAs no pueden recomendar a PROSAM</span>
+            </div>
+            <div class="problem-item">
+                <span class="icon">&#10005;</span>
+                <span class="text">Sin Google Business Profile vinculado al sitio</span>
+            </div>
+        </div>
+
+        <div class="counters reveal">
+            <div class="counter-item">
+                <div class="number" data-target="30" data-suffix="+">0</div>
+                <div class="text">Anos de trayectoria</div>
+            </div>
+            <div class="counter-item">
+                <div class="number" data-target="7">0</div>
+                <div class="text">Servicios a posicionar</div>
+            </div>
+            <div class="counter-item">
+                <div class="number" data-target="9">0</div>
+                <div class="text">Coberturas medicas</div>
+            </div>
+            <div class="counter-item">
+                <div class="number" data-target="3">0</div>
+                <div class="text">Sedes operativas</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SOLUCIÓN -->
+<section id="solucion">
+    <div class="section-container">
+        <div class="reveal">
+            <div class="section-label"><span class="line"></span> Nuestra solucion</div>
+            <h2 class="section-title">Lo que vamos a construir</h2>
+            <p class="section-subtitle">Una presencia digital completa, profesional y optimizada para captar pacientes privados en CABA.</p>
+        </div>
+
+        <div class="solucion-grid">
+            <div class="solucion-card reveal">
+                <div class="icon-wrap">&#127760;</div>
+                <h3>Web Premium</h3>
+                <p>Sitio completo con home, 4 paginas principales, 7 landings de servicios optimizadas y blog. Diseno inspirado en Lopez Ibor con identidad propia.</p>
+            </div>
+            <div class="solucion-card reveal">
+                <div class="icon-wrap">&#127912;</div>
+                <h3>Manual de Marca</h3>
+                <p>Rediseno del logo, paleta de colores, tipografias y guia de uso. La base para toda la comunicacion visual de PROSAM.</p>
+            </div>
+            <div class="solucion-card reveal">
+                <div class="icon-wrap">&#128270;</div>
+                <h3>SEO + GEO</h3>
+                <p>Posicionamiento en Google y en IAs (ChatGPT, Gemini, Perplexity). Schema markup medico, keywords estrategicas, contenido citable.</p>
+            </div>
+            <div class="solucion-card reveal">
+                <div class="icon-wrap">&#128241;</div>
+                <h3>Mobile-First</h3>
+                <p>68% de las busquedas de salud mental son desde celular. Cada pixel se disena primero para mobile, despues para desktop.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PLATAFORMA -->
+<section class="plataforma" id="plataforma">
+    <div class="section-container">
+        <div class="reveal">
+            <div class="section-label"><span class="line"></span> Plataforma</div>
+            <h2 class="section-title">WordPress o alternativa?</h2>
+            <p class="section-subtitle">Queremos ofrecerte la mejor opcion. Comparamos las plataformas disponibles para que puedas decidir con informacion.</p>
+        </div>
+
+        <div class="reveal">
+            <table class="platform-table">
+                <thead>
+                    <tr>
+                        <th>Aspecto</th>
+                        <th>WordPress + Elementor</th>
+                        <th class="highlight-col">Webflow</th>
+                        <th>Next.js (Vercel)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Editable sin codigo</td>
+                        <td><span class="check">&#10003;</span> Editor visual</td>
+                        <td class="highlight-col"><span class="check">&#10003;</span> Editor visual profesional</td>
+                        <td><span class="warn">&#9888;</span> Requiere CMS</td>
+                    </tr>
+                    <tr>
+                        <td>Performance</td>
+                        <td><span class="warn">&#9888;</span> Plugins pesados</td>
+                        <td class="highlight-col"><span class="check">&#10003;</span> Rapido</td>
+                        <td><span class="check">&#10003;</span> Ultra rapido</td>
+                    </tr>
+                    <tr>
+                        <td>SEO</td>
+                        <td><span class="check">&#10003;</span> Con plugins (Yoast)</td>
+                        <td class="highlight-col"><span class="check">&#10003;</span> Bueno nativo</td>
+                        <td><span class="check">&#10003;</span> Superior nativo</td>
+                    </tr>
+                    <tr>
+                        <td>Mantenimiento</td>
+                        <td><span class="warn">&#9888;</span> Updates + seguridad</td>
+                        <td class="highlight-col"><span class="check">&#10003;</span> Zero maintenance</td>
+                        <td><span class="check">&#10003;</span> Zero maintenance</td>
+                    </tr>
+                    <tr>
+                        <td>Costo hosting</td>
+                        <td>$10-20 USD/mes</td>
+                        <td class="highlight-col">$20-40 USD/mes</td>
+                        <td>Gratis (Vercel)</td>
+                    </tr>
+                    <tr>
+                        <td>Seguridad</td>
+                        <td><span class="warn">&#9888;</span> Vulnerable a ataques</td>
+                        <td class="highlight-col"><span class="check">&#10003;</span> Gestionado</td>
+                        <td><span class="check">&#10003;</span> Gestionado</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="platform-note reveal">
+            <strong>Nuestra recomendacion:</strong> Si buscas poder editar el sitio sin depender de un desarrollador, <strong>Webflow</strong> ofrece el mejor balance entre autonomia y rendimiento. Si preferes WordPress por familiaridad o por requerimiento especifico, lo hacemos sin problema con la misma calidad de resultado. La decision es tuya — nos adaptamos.
+        </div>
+    </div>
+</section>
+
+<!-- ARQUITECTURA -->
+<section id="arquitectura">
+    <div class="section-container">
+        <div class="reveal">
+            <div class="section-label"><span class="line"></span> Arquitectura</div>
+            <h2 class="section-title">Mapa del sitio</h2>
+            <p class="section-subtitle">Estructura pensada para escalar. Agregar servicios o landings sin tocar la estructura principal.</p>
+        </div>
+
+        <div class="arq-tree">
+            <div class="arq-node home reveal"><span class="tag">Home</span><span class="name">Pagina Principal</span><span class="url">/</span></div>
+            <div class="arq-node page reveal"><span class="tag">Menu</span><span class="name">Servicios</span><span class="url">/servicios</span></div>
+            <div class="arq-node page reveal"><span class="tag">Menu</span><span class="name">Coberturas</span><span class="url">/coberturas</span></div>
+            <div class="arq-node page reveal"><span class="tag">Menu</span><span class="name">Contacto</span><span class="url">/contacto</span></div>
+            <div class="arq-node page reveal"><span class="tag">Footer</span><span class="name">Blog</span><span class="url">/blog</span></div>
+            <div class="arq-node landing reveal"><span class="tag">Landing</span><span class="name">Psiquiatria</span><span class="url">/psiquiatria</span></div>
+            <div class="arq-node landing reveal"><span class="tag">Landing</span><span class="name">Psicologia</span><span class="url">/psicologia</span></div>
+            <div class="arq-node landing reveal"><span class="tag">Landing</span><span class="name">Ninos y Adolescentes</span><span class="url">/ninos-y-adolescentes</span></div>
+            <div class="arq-node landing reveal"><span class="tag">Landing</span><span class="name">Hospital de Dia</span><span class="url">/hospital-de-dia</span></div>
+            <div class="arq-node landing reveal"><span class="tag">Landing</span><span class="name">Evaluacion Neurocognitiva</span><span class="url">/evaluacion-neurocognitiva</span></div>
+            <div class="arq-node landing reveal"><span class="tag">Landing</span><span class="name">Rehabilitacion Neurocognitiva</span><span class="url">/rehabilitacion-neurocognitiva</span></div>
+            <div class="arq-node landing reveal"><span class="tag">Landing</span><span class="name">Taller de Memoria</span><span class="url">/taller-de-memoria</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- SEO + GEO -->
+<section class="seo-section" id="seo">
+    <div class="section-container">
+        <div class="reveal">
+            <div class="section-label"><span class="line"></span> Posicionamiento</div>
+            <h2 class="section-title">SEO + GEO</h2>
+            <p class="section-subtitle">Posicionamiento en Google y en inteligencias artificiales. Dos canales de captacion que trabajan juntos.</p>
+        </div>
+
+        <div class="seo-columns reveal">
+            <div class="seo-block">
+                <h3>&#128269; SEO — Google</h3>
+                <ul class="seo-list">
+                    <li><span class="icon">&#10003;</span> Meta title y description unicos por pagina</li>
+                    <li><span class="icon">&#10003;</span> H1 con keyword + ubicacion (ej: "Psiquiatra en CABA")</li>
+                    <li><span class="icon">&#10003;</span> URLs limpias y descriptivas</li>
+                    <li><span class="icon">&#10003;</span> Schema markup MedicalOrganization</li>
+                    <li><span class="icon">&#10003;</span> Velocidad menor a 3 segundos</li>
+                    <li><span class="icon">&#10003;</span> Mobile-first (Google indexa mobile primero)</li>
+                    <li><span class="icon">&#10003;</span> Google Business Profile vinculado</li>
+                    <li><span class="icon">&#10003;</span> Sitemap XML + robots.txt</li>
+                </ul>
+            </div>
+            <div class="seo-block">
+                <h3>&#129302; GEO — Inteligencias Artificiales</h3>
+                <ul class="seo-list">
+                    <li><span class="icon">&#10003;</span> Contenido estructurado y citable</li>
+                    <li><span class="icon">&#10003;</span> Respuestas claras a preguntas directas</li>
+                    <li><span class="icon">&#10003;</span> Datos factuales: trayectoria, servicios, ubicacion</li>
+                    <li><span class="icon">&#10003;</span> FAQs que las IAs pueden interpretar</li>
+                    <li><span class="icon">&#10003;</span> Schema markup rico para contexto</li>
+                    <li><span class="icon">&#10003;</span> Diferenciacion clara vs competencia</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="reveal">
+            <table class="keywords-table">
+                <thead>
+                    <tr>
+                        <th>Landing</th>
+                        <th>Keyword principal</th>
+                        <th>Competencia</th>
+                        <th>Velocidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Psiquiatria</strong></td>
+                        <td>psiquiatra CABA</td>
+                        <td><span class="kw-badge high">Alta</span></td>
+                        <td>Inmediata</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ninos y Adolescentes</strong></td>
+                        <td>psicologo ninos CABA</td>
+                        <td><span class="kw-badge high">Alta</span></td>
+                        <td>Inmediata</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Evaluacion Neurocognitiva</strong></td>
+                        <td>evaluacion neurocognitiva Buenos Aires</td>
+                        <td><span class="kw-badge low">Baja</span></td>
+                        <td><span class="kw-badge strategic">Estrategica</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rehabilitacion Neurocognitiva</strong></td>
+                        <td>rehabilitacion neurocognitiva CABA</td>
+                        <td><span class="kw-badge low">Baja</span></td>
+                        <td><span class="kw-badge strategic">Estrategica</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Taller de Memoria</strong></td>
+                        <td>taller de memoria Buenos Aires</td>
+                        <td><span class="kw-badge low">Baja</span></td>
+                        <td><span class="kw-badge strategic">Estrategica</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hospital de Dia</strong></td>
+                        <td>hospital de dia psiquiatrico Buenos Aires</td>
+                        <td><span class="kw-badge medium">Media</span></td>
+                        <td>Media</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+    <div class="section-container">
+        <div class="reveal">
+            <div class="section-label"><span class="line"></span> Timeline</div>
+            <h2 class="section-title">Fases del proyecto</h2>
+            <p class="section-subtitle">Proceso estructurado con entregas parciales. Cada fase tiene aprobacion antes de avanzar.</p>
+        </div>
+
+        <div class="timeline-wrap">
+            <div class="timeline-item reveal">
+                <div class="week">Semana 1</div>
+                <h3>Kick-off y alineacion</h3>
+                <p>Reunion inicial, definicion de alcance, recoleccion de textos, accesos y materiales. Resolucion de pendientes clinicos.</p>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="week">Semanas 2 - 3</div>
+                <h3>Manual de Marca</h3>
+                <p>Rediseno de logo, definicion de paleta, tipografias y guia de uso. Aprobacion antes de avanzar con la web.</p>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="week">Semanas 3 - 4</div>
+                <h3>Diseno Web</h3>
+                <p>Wireframes mobile-first, diseno visual con la marca nueva. Hero con overlay, tarjetas de servicios, landings individuales. Aprobacion de disenos.</p>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="week">Semanas 4 - 6</div>
+                <h3>Desarrollo</h3>
+                <p>Maquetacion completa: home, paginas de menu, 7 landings de servicios, blog, formularios, WhatsApp flotante, mapa. Testing mobile y cross-browser.</p>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="week">Semana 6 - 7</div>
+                <h3>SEO + GEO</h3>
+                <p>Implementacion tecnica: meta tags, schema markup, alt texts, sitemap, Search Console, Google Business Profile, contenido GEO.</p>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="week">Semana 7 - 8</div>
+                <h3>Lanzamiento</h3>
+                <p>QA final, migracion DNS, go-live, verificacion de indexacion, monitoreo de Core Web Vitals, ajustes post-lanzamiento.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- INVERSIÓN -->
+<section class="pricing-section" id="inversion">
+    <div class="section-container">
+        <div class="reveal">
+            <div class="section-label"><span class="line"></span> Inversion</div>
+            <h2 class="section-title">Paquetes y precios</h2>
+            <p class="section-subtitle">Transparencia total. Un paquete base con todo lo esencial y opcionales que podes sumar cuando quieras.</p>
+        </div>
+
+        <div class="pricing-grid reveal">
+            <div class="price-card featured">
+                <div class="tier">Paquete Base</div>
+                <h3>Web + Marca + SEO/GEO</h3>
+                <div class="price">$800 <span style="font-size:1rem;font-weight:400;opacity:0.5">USD</span></div>
+                <div class="price-note">Pago unico — entrega en 8 semanas</div>
+                <ul class="features">
+                    <li><span class="icon">&#10003;</span> Pagina web completa (Home + 4 paginas + 7 landings + blog)</li>
+                    <li><span class="icon">&#10003;</span> Manual de Marca (logo + paleta + tipografias + guia)</li>
+                    <li><span class="icon">&#10003;</span> SEO tecnico completo</li>
+                    <li><span class="icon">&#10003;</span> Optimizacion GEO (IAs)</li>
+                    <li><span class="icon">&#10003;</span> Formulario de contacto con dropdown</li>
+                    <li><span class="icon">&#10003;</span> WhatsApp flotante con mensaje prellenado</li>
+                    <li><span class="icon">&#10003;</span> Mobile-first responsive</li>
+                    <li><span class="icon">&#10003;</span> Google Maps en pagina de contacto</li>
+                    <li><span class="icon">&#10003;</span> Google Search Console configurado</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="opcionales-wrap reveal">
+            <h3>Servicios opcionales</h3>
+            <div class="opcional-row">
+                <div class="info">
+                    <h4>Google Ads</h4>
+                    <p>Campanas Search CABA — psiquiatria, neurocognitiva, hospital de dia. Configuracion de conversiones.</p>
+                </div>
+                <div class="precio">$200 setup + $150/mes</div>
+            </div>
+            <div class="opcional-row">
+                <div class="info">
+                    <h4>Redes Sociales</h4>
+                    <p>Estrategia + creacion de contenido Instagram y Facebook. Publicaciones regulares con identidad de marca.</p>
+                </div>
+                <div class="precio">$350/mes</div>
+            </div>
+            <div class="opcional-row">
+                <div class="info">
+                    <h4>Blog / Content Marketing</h4>
+                    <p>Articulos SEO para posicionamiento organico. Contenido educativo sobre salud mental.</p>
+                </div>
+                <div class="precio">$100/articulo o $300/mes</div>
+            </div>
+            <div class="opcional-row">
+                <div class="info">
+                    <h4>Agente IA — Recordatorios</h4>
+                    <p>Recordatorios automaticos de turnos, confirmaciones y cancelaciones via WhatsApp.</p>
+                </div>
+                <div class="precio">$150 setup + ~$20/mes</div>
+            </div>
+            <div class="opcional-row">
+                <div class="info">
+                    <h4>Chat IA en Web</h4>
+                    <p>Bot de orientacion en el sitio que deriva consultas al WhatsApp o formulario.</p>
+                </div>
+                <div class="precio">$100 setup + ~$15/mes</div>
+            </div>
+            <div class="opcional-row">
+                <div class="info">
+                    <h4>Formulario en Hero de Landings</h4>
+                    <p>Formulario embebido en cada landing de servicio (estilo Lopez Ibor). Aumenta conversion.</p>
+                </div>
+                <div class="precio">$100</div>
+            </div>
+            <div class="opcional-row">
+                <div class="info">
+                    <h4>Agendamiento Web</h4>
+                    <p>Sistema de turnos online con filtro de admision para pacientes inactivos. Implementable cuando lo decidas.</p>
+                </div>
+                <div class="precio">$200 setup + $50/mes</div>
+            </div>
+            <div class="opcional-row">
+                <div class="info">
+                    <h4>CRM (GoHighLevel)</h4>
+                    <p>Gestion completa de pacientes, calendario, automatizaciones, embudos. Ecosistema 360.</p>
+                </div>
+                <div class="precio">$150 setup + $97/mes</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+    <div class="section-container">
+        <div class="reveal">
+            <div class="section-label"><span class="line"></span> Portfolio</div>
+            <h2 class="section-title">Proyectos en produccion</h2>
+            <p class="section-subtitle">Algunos de los proyectos que estamos desarrollando y gestionando actualmente.</p>
+        </div>
+
+        <div class="portfolio-grid">
+            <div class="portfolio-card reveal">
+                <div class="image" style="background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);"></div>
+                <div class="body">
+                    <h3>Centro Antoa</h3>
+                    <p>Centro estetico en Uruguay. Servicio 360: marca, web, Meta Ads, CRM con 4 agentes IA (asesoramiento, servicios, cobros, agendamiento). Ecosistema completo.</p>
+                    <div class="tags">
+                        <span class="tag">GoHighLevel</span>
+                        <span class="tag">Meta Ads</span>
+                        <span class="tag">IA Agents</span>
+                        <span class="tag">n8n</span>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-card reveal">
+                <div class="image" style="background: linear-gradient(135deg, #0d1b2a, #1b263b, #415a77);"></div>
+                <div class="body">
+                    <h3>GymApp</h3>
+                    <p>SaaS para gimnasios LATAM. Gestion de socios, rutinas, pagos, notificaciones. App web + mobile con dashboard completo.</p>
+                    <div class="tags">
+                        <span class="tag">Next.js</span>
+                        <span class="tag">React Native</span>
+                        <span class="tag">Vercel</span>
+                        <span class="tag">Neon DB</span>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-card reveal">
+                <div class="image" style="background: linear-gradient(135deg, #2d1b69, #11998e, #38ef7d);"></div>
+                <div class="body">
+                    <h3>FabrIQ</h3>
+                    <p>SaaS para fabricantes de alimentos. Trazabilidad, gestion de lotes, produccion. Primer cliente activo en Argentina.</p>
+                    <div class="tags">
+                        <span class="tag">Next.js</span>
+                        <span class="tag">Prisma</span>
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">Vercel</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section" id="contacto">
+    <div class="section-container">
+        <div class="reveal">
+            <h2 class="section-title">Empecemos</h2>
+            <p>El siguiente paso es una reunion de 30 minutos donde te mostramos el ecosistema completo, resolvemos dudas y cerramos el alcance.</p>
+            <a href="https://wa.me/59899000000?text=Hola%20Juan%2C%20vi%20la%20propuesta%20de%20PROSAM%20y%20me%20interesa%20coordinar%20una%20reunion" class="cta-button" target="_blank">
+                Coordinar Reunion &#8594;
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>Propuesta preparada exclusivamente para Centro Medico PROSAM — Abril 2026</p>
+    <p style="margin-top:0.5rem">Juan Larrarte — Desarrollo Digital & Automatizacion</p>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════ */
+/*  LOADER                                        */
+/* ═══════════════════════════════════════════════ */
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        document.getElementById('loader').classList.add('hidden');
+        animateHero();
+    }, 2200);
+});
+
+/* ═══════════════════════════════════════════════ */
+/*  HERO ANIMATION                                */
+/* ═══════════════════════════════════════════════ */
+function animateHero() {
+    const els = document.querySelectorAll('.hero-badge, .hero h1, .hero p, .hero-cta');
+    els.forEach((el, i) => {
+        setTimeout(() => {
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+        }, i * 200);
+    });
+}
+
+/* ═══════════════════════════════════════════════ */
+/*  HERO CANVAS — Particles                       */
+/* ═══════════════════════════════════════════════ */
+(function() {
+    const canvas = document.getElementById('hero-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let w, h;
+
+    function resize() {
+        w = canvas.width = canvas.offsetWidth;
+        h = canvas.height = canvas.offsetHeight;
+    }
+
+    function createParticles() {
+        particles = [];
+        const count = Math.min(80, Math.floor(w * h / 15000));
+        for (let i = 0; i < count; i++) {
+            particles.push({
+                x: Math.random() * w,
+                y: Math.random() * h,
+                vx: (Math.random() - 0.5) * 0.3,
+                vy: (Math.random() - 0.5) * 0.3,
+                r: Math.random() * 2 + 0.5,
+                alpha: Math.random() * 0.3 + 0.1
+            });
+        }
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, w, h);
+        particles.forEach(p => {
+            p.x += p.vx;
+            p.y += p.vy;
+            if (p.x < 0) p.x = w;
+            if (p.x > w) p.x = 0;
+            if (p.y < 0) p.y = h;
+            if (p.y > h) p.y = 0;
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(8, 157, 151, ${p.alpha})`;
+            ctx.fill();
+        });
+
+        // Draw connections
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 120) {
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.strokeStyle = `rgba(8, 157, 151, ${0.08 * (1 - dist / 120)})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
+                }
+            }
+        }
+        requestAnimationFrame(draw);
+    }
+
+    resize();
+    createParticles();
+    draw();
+    window.addEventListener('resize', () => { resize(); createParticles(); });
+})();
+
+/* ═══════════════════════════════════════════════ */
+/*  SCROLL REVEAL                                 */
+/* ═══════════════════════════════════════════════ */
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => {
+                entry.target.classList.add('visible');
+            }, i * 100);
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ═══════════════════════════════════════════════ */
+/*  COUNTERS                                      */
+/* ═══════════════════════════════════════════════ */
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.dataset.target);
+            const suffix = el.dataset.suffix || '';
+            if (!target) return;
+
+            let current = 0;
+            const increment = target / 60;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                el.textContent = Math.floor(current) + suffix;
+            }, 25);
+            counterObserver.unobserve(el);
+        }
+    });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+/* ═══════════════════════════════════════════════ */
+/*  NAV SCROLL                                    */
+/* ═══════════════════════════════════════════════ */
+window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    nav.classList.toggle('scrolled', window.scrollY > 80);
+});
+
+/* ═══════════════════════════════════════════════ */
+/*  NAV MOBILE TOGGLE                             */
+/* ═══════════════════════════════════════════════ */
+document.querySelector('.nav-toggle').addEventListener('click', () => {
+    document.querySelector('.nav-links').classList.toggle('open');
+});
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.remove('open');
+    });
+});
+
+/* ═══════════════════════════════════════════════ */
+/*  SMOOTH SCROLL                                 */
+/* ═══════════════════════════════════════════════ */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+</script>
+
+</body>
+</html>
