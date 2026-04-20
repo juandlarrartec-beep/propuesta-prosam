@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>Propuesta Digital — Centro Médico PROSAM</title>
     <meta name="robots" content="noindex, nofollow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,7 +70,10 @@
         /* ═══════════════════════════════════════════════ */
         #loader {
             position: fixed;
-            inset: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: 9999;
             background: var(--blue-900);
             display: flex;
@@ -90,6 +93,8 @@
             margin-bottom: 2rem;
             opacity: 0;
             animation: loaderFadeIn 0.8s ease 0.2s forwards;
+            text-align: center;
+            width: 100%;
         }
         .loader-bar {
             width: 200px;
@@ -900,17 +905,29 @@
             box-shadow: var(--shadow-xl);
         }
         .portfolio-card .image {
-            height: 200px;
+            height: 220px;
             background-size: cover;
-            background-position: center;
+            background-position: top center;
             position: relative;
         }
         .portfolio-card .image::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom, transparent 50%, rgba(10,22,40,0.8));
+            background: linear-gradient(to bottom, transparent 60%, rgba(10,22,40,0.6));
         }
+        .portfolio-card .visit-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 1rem;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--teal-500);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .portfolio-card .visit-link:hover { color: var(--teal-400); }
         .portfolio-card .body {
             padding: 1.5rem;
         }
@@ -1073,10 +1090,7 @@
         .tooltip .tip-text {
             visibility: hidden;
             opacity: 0;
-            position: absolute;
-            bottom: calc(100% + 10px);
-            left: 50%;
-            transform: translateX(-50%);
+            position: fixed;
             background: var(--blue-900);
             color: var(--white);
             padding: 0.75rem 1rem;
@@ -1085,37 +1099,17 @@
             line-height: 1.5;
             width: 280px;
             max-width: 90vw;
-            box-shadow: var(--shadow-lg);
-            z-index: 100;
+            box-shadow: var(--shadow-xl);
+            z-index: 9999;
             transition: opacity 0.3s ease, visibility 0.3s ease;
             pointer-events: none;
             font-weight: 400;
             text-align: left;
         }
-        .tooltip .tip-text::after {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            border: 6px solid transparent;
-            border-top-color: var(--blue-900);
-        }
         .tooltip:hover .tip-text,
         .tooltip:focus .tip-text {
             visibility: visible;
             opacity: 1;
-        }
-        @media (max-width: 768px) {
-            .tooltip .tip-text {
-                left: 0;
-                transform: none;
-                width: 250px;
-            }
-            .tooltip .tip-text::after {
-                left: 20px;
-                transform: none;
-            }
         }
     </style>
 </head>
@@ -1300,7 +1294,7 @@
                         <td>Editable sin codigo</td>
                         <td><span class="check">&#10003;</span> Editor visual</td>
                         <td class="highlight-col"><span class="check">&#10003;</span> Editor visual profesional</td>
-                        <td><span class="warn">&#9888;</span> Requiere CMS</td>
+                        <td><span class="check">&#10003;</span> <span class="tooltip">Con panel editor (gratis)<span class="tip-icon">i</span><span class="tip-text">Se agrega un panel web simple donde podés editar textos, subir fotos y publicar en el blog sin tocar código. Es gratuito para sitios del tamaño de PROSAM.</span></span></td>
                     </tr>
                     <tr>
                         <td>Performance</td>
@@ -1604,42 +1598,45 @@
 
         <div class="portfolio-grid">
             <div class="portfolio-card reveal">
-                <div class="image" style="background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);"></div>
+                <div class="image" style="background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); background-image: url('https://api.microlink.io/?url=https://centroantoa.com&screenshot=true&meta=false&embed=screenshot.url'); background-size: cover; background-position: top center;"></div>
                 <div class="body">
-                    <h3>Centro Antoa</h3>
-                    <p>Centro estético en Uruguay. Servicio 360: marca, web, Meta Ads, CRM con 4 agentes IA (asesoramiento, servicios, cobros, agendamiento). Ecosistema completo.</p>
+                    <h3>Centro Antoá</h3>
+                    <p>Centro estético en Uruguay. Servicio 360: marca, web, Meta Ads, CRM con 4 agentes IA (asesoramiento, servicios, cobros, agendamiento).</p>
                     <div class="tags">
                         <span class="tag">GoHighLevel</span>
                         <span class="tag">Meta Ads</span>
                         <span class="tag">IA Agents</span>
                         <span class="tag">n8n</span>
                     </div>
+                    <a href="https://centroantoa.com" target="_blank" class="visit-link">Ver proyecto &#8594;</a>
                 </div>
             </div>
             <div class="portfolio-card reveal">
-                <div class="image" style="background: linear-gradient(135deg, #0d1b2a, #1b263b, #415a77);"></div>
+                <div class="image" style="background: linear-gradient(135deg, #0d1b2a, #1b263b, #415a77); background-image: url('https://api.microlink.io/?url=https://gymapp.vercel.app&screenshot=true&meta=false&embed=screenshot.url'); background-size: cover; background-position: top center;"></div>
                 <div class="body">
                     <h3>GymApp</h3>
-                    <p>SaaS para gimnasios LATAM. Gestion de socios, rutinas, pagos, notificaciones. App web + mobile con dashboard completo.</p>
+                    <p>SaaS para gimnasios LATAM. Gestión de socios, rutinas, pagos, notificaciones. App web + mobile con dashboard completo.</p>
                     <div class="tags">
                         <span class="tag">Next.js</span>
                         <span class="tag">React Native</span>
                         <span class="tag">Vercel</span>
                         <span class="tag">Neon DB</span>
                     </div>
+                    <a href="https://gymapp.vercel.app" target="_blank" class="visit-link">Ver proyecto &#8594;</a>
                 </div>
             </div>
             <div class="portfolio-card reveal">
-                <div class="image" style="background: linear-gradient(135deg, #2d1b69, #11998e, #38ef7d);"></div>
+                <div class="image" style="background: linear-gradient(135deg, #2d1b69, #11998e, #38ef7d); background-image: url('https://api.microlink.io/?url=https://fabriq-sepia.vercel.app&screenshot=true&meta=false&embed=screenshot.url'); background-size: cover; background-position: top center;"></div>
                 <div class="body">
                     <h3>FabrIQ</h3>
-                    <p>SaaS para fabricantes de alimentos. Trazabilidad, gestion de lotes, produccion. Primer cliente activo en Argentina.</p>
+                    <p>SaaS para fabricantes de alimentos. Trazabilidad, gestión de lotes, producción. Primer cliente activo en Argentina.</p>
                     <div class="tags">
                         <span class="tag">Next.js</span>
                         <span class="tag">Prisma</span>
                         <span class="tag">TypeScript</span>
                         <span class="tag">Vercel</span>
                     </div>
+                    <a href="https://fabriq-sepia.vercel.app" target="_blank" class="visit-link">Ver proyecto &#8594;</a>
                 </div>
             </div>
         </div>
@@ -1651,8 +1648,8 @@
     <div class="section-container">
         <div class="reveal">
             <h2 class="section-title">Empecemos</h2>
-            <p>El siguiente paso es una reunion de 30 minutos donde te mostramos el ecosistema completo, resolvemos dudas y cerramos el alcance.</p>
-            <a href="https://wa.me/59899000000?text=Hola%20Juan%2C%20vi%20la%20propuesta%20de%20PROSAM%20y%20me%20interesa%20coordinar%20una%20reunion" class="cta-button" target="_blank">
+            <p>El siguiente paso es una reunión de 30 minutos donde te mostramos el ecosistema completo, resolvemos dudas y cerramos el alcance.</p>
+            <a href="https://wa.me/541126555360?text=Hola%20Juan%2C%20vi%20la%20propuesta%20de%20PROSAM%20y%20me%20interesa%20coordinar%20una%20reuni%C3%B3n" class="cta-button" target="_blank">
                 Coordinar Reunión &#8594;
             </a>
         </div>
@@ -1661,8 +1658,8 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-    <p>Propuesta preparada exclusivamente para Centro Medico PROSAM — Abril 2026</p>
-    <p style="margin-top:0.5rem">Juan Larrarte — Desarrollo Digital & Automatizacion</p>
+    <p>Propuesta preparada exclusivamente para Centro Médico PROSAM — Abril 2026</p>
+    <p style="margin-top:0.5rem">Juan Larrarte — Desarrollo Digital & Automatización</p>
 </footer>
 
 <script>
@@ -1833,6 +1830,38 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+
+/* ═══════════════════════════════════════════════ */
+/*  TOOLTIPS — POSICIÓN DINÁMICA                  */
+/* ═══════════════════════════════════════════════ */
+document.querySelectorAll('.tooltip').forEach(tip => {
+    tip.addEventListener('mouseenter', function() {
+        const tipText = this.querySelector('.tip-text');
+        if (!tipText) return;
+        const rect = this.getBoundingClientRect();
+        const tipW = 280;
+        // Position above the element
+        let top = rect.top - 10;
+        let left = rect.left + rect.width / 2 - tipW / 2;
+        // Keep within viewport horizontally
+        if (left < 10) left = 10;
+        if (left + tipW > window.innerWidth - 10) left = window.innerWidth - tipW - 10;
+        // If no room above, show below
+        tipText.style.width = tipW + 'px';
+        tipText.style.left = left + 'px';
+        // Measure tip height
+        tipText.style.visibility = 'hidden';
+        tipText.style.opacity = '0';
+        tipText.style.display = 'block';
+        const tipH = tipText.offsetHeight;
+        tipText.style.display = '';
+        if (top - tipH < 10) {
+            tipText.style.top = (rect.bottom + 10) + 'px';
+        } else {
+            tipText.style.top = (top - tipH) + 'px';
         }
     });
 });
