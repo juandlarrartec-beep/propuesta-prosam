@@ -526,16 +526,17 @@
 
         .platform-table-wrap {
             overflow-x: auto;
+            overflow-y: visible;
             -webkit-overflow-scrolling: touch;
             margin-top: 2rem;
             border-radius: var(--radius);
+            position: relative;
         }
         .platform-table {
             width: 100%;
             min-width: 600px;
             border-collapse: separate;
             border-spacing: 0;
-            overflow: hidden;
             border-radius: var(--radius);
             border: 1px solid rgba(255,255,255,0.1);
         }
@@ -1128,6 +1129,21 @@
         .problem-item .tooltip .tip-text::after {
             left: 20px;
             transform: none;
+        }
+        /* Table tooltips: open downward to avoid clipping */
+        .platform-table .tooltip .tip-text {
+            bottom: auto;
+            top: calc(100% + 8px);
+            left: 0;
+            transform: none;
+        }
+        .platform-table .tooltip .tip-text::after {
+            top: auto;
+            bottom: 100%;
+            left: 20px;
+            transform: none;
+            border-top-color: transparent;
+            border-bottom-color: var(--blue-900);
         }
         @media (max-width: 768px) {
             .tooltip .tip-text {
