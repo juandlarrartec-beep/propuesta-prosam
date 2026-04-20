@@ -1088,28 +1088,57 @@
             flex-shrink: 0;
         }
         .tooltip .tip-text {
-            visibility: hidden;
-            opacity: 0;
-            position: fixed;
+            display: none;
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
             background: var(--blue-900);
             color: var(--white);
             padding: 0.75rem 1rem;
             border-radius: var(--radius-sm);
             font-size: 0.82rem;
             line-height: 1.5;
-            width: 280px;
-            max-width: 90vw;
+            width: 260px;
             box-shadow: var(--shadow-xl);
             z-index: 9999;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-            pointer-events: none;
             font-weight: 400;
             text-align: left;
         }
-        .tooltip:hover .tip-text,
-        .tooltip:focus .tip-text {
-            visibility: visible;
-            opacity: 1;
+        .tooltip .tip-text::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: var(--blue-900);
+        }
+        .tooltip:hover .tip-text {
+            display: block;
+        }
+        /* Prevent overflow — flip left/right on edges */
+        .score-card .tooltip .tip-text,
+        .problem-item .tooltip .tip-text {
+            left: 0;
+            transform: none;
+            width: 240px;
+        }
+        .score-card .tooltip .tip-text::after,
+        .problem-item .tooltip .tip-text::after {
+            left: 20px;
+            transform: none;
+        }
+        @media (max-width: 768px) {
+            .tooltip .tip-text {
+                left: 0;
+                transform: none;
+                width: 220px;
+            }
+            .tooltip .tip-text::after {
+                left: 20px;
+                transform: none;
+            }
         }
     </style>
 </head>
@@ -1598,7 +1627,7 @@
 
         <div class="portfolio-grid">
             <div class="portfolio-card reveal">
-                <div class="image" style="background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); background-image: url('https://api.microlink.io/?url=https://centroantoa.com&screenshot=true&meta=false&embed=screenshot.url'); background-size: cover; background-position: top center;"></div>
+                <div class="image" style="background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); background-image: url('https://api.microlink.io/?url=https://juandlarrartec-beep.github.io/antoa-dashboard/&screenshot=true&meta=false&embed=screenshot.url'); background-size: cover; background-position: top center;"></div>
                 <div class="body">
                     <h3>Centro Antoá</h3>
                     <p>Centro estético en Uruguay. Servicio 360: marca, web, Meta Ads, CRM con 4 agentes IA (asesoramiento, servicios, cobros, agendamiento).</p>
@@ -1608,11 +1637,11 @@
                         <span class="tag">IA Agents</span>
                         <span class="tag">n8n</span>
                     </div>
-                    <a href="https://centroantoa.com" target="_blank" class="visit-link">Ver proyecto &#8594;</a>
+                    <a href="https://juandlarrartec-beep.github.io/antoa-dashboard/" target="_blank" class="visit-link">Ver proyecto &#8594;</a>
                 </div>
             </div>
             <div class="portfolio-card reveal">
-                <div class="image" style="background: linear-gradient(135deg, #0d1b2a, #1b263b, #415a77); background-image: url('https://api.microlink.io/?url=https://gymapp.vercel.app&screenshot=true&meta=false&embed=screenshot.url'); background-size: cover; background-position: top center;"></div>
+                <div class="image" style="background: linear-gradient(135deg, #0d1b2a, #1b263b, #415a77); background-image: url('https://api.microlink.io/?url=https://gymapp-web-kappa.vercel.app&screenshot=true&meta=false&embed=screenshot.url'); background-size: cover; background-position: top center;"></div>
                 <div class="body">
                     <h3>GymApp</h3>
                     <p>SaaS para gimnasios LATAM. Gestión de socios, rutinas, pagos, notificaciones. App web + mobile con dashboard completo.</p>
@@ -1622,7 +1651,7 @@
                         <span class="tag">Vercel</span>
                         <span class="tag">Neon DB</span>
                     </div>
-                    <a href="https://gymapp.vercel.app" target="_blank" class="visit-link">Ver proyecto &#8594;</a>
+                    <a href="https://gymapp-web-kappa.vercel.app" target="_blank" class="visit-link">Ver proyecto &#8594;</a>
                 </div>
             </div>
             <div class="portfolio-card reveal">
@@ -1835,35 +1864,19 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 /* ═══════════════════════════════════════════════ */
-/*  TOOLTIPS — POSICIÓN DINÁMICA                  */
+/*  TOOLTIPS — TOUCH SUPPORT                      */
 /* ═══════════════════════════════════════════════ */
 document.querySelectorAll('.tooltip').forEach(tip => {
-    tip.addEventListener('mouseenter', function() {
+    tip.addEventListener('click', function(e) {
+        e.stopPropagation();
+        // Close all other tooltips
+        document.querySelectorAll('.tooltip .tip-text').forEach(t => t.style.display = 'none');
         const tipText = this.querySelector('.tip-text');
-        if (!tipText) return;
-        const rect = this.getBoundingClientRect();
-        const tipW = 280;
-        // Position above the element
-        let top = rect.top - 10;
-        let left = rect.left + rect.width / 2 - tipW / 2;
-        // Keep within viewport horizontally
-        if (left < 10) left = 10;
-        if (left + tipW > window.innerWidth - 10) left = window.innerWidth - tipW - 10;
-        // If no room above, show below
-        tipText.style.width = tipW + 'px';
-        tipText.style.left = left + 'px';
-        // Measure tip height
-        tipText.style.visibility = 'hidden';
-        tipText.style.opacity = '0';
-        tipText.style.display = 'block';
-        const tipH = tipText.offsetHeight;
-        tipText.style.display = '';
-        if (top - tipH < 10) {
-            tipText.style.top = (rect.bottom + 10) + 'px';
-        } else {
-            tipText.style.top = (top - tipH) + 'px';
-        }
+        if (tipText) tipText.style.display = tipText.style.display === 'block' ? 'none' : 'block';
     });
+});
+document.addEventListener('click', () => {
+    document.querySelectorAll('.tooltip .tip-text').forEach(t => t.style.display = '');
 });
 </script>
 
