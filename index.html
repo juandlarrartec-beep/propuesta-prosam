@@ -857,9 +857,26 @@
             color: var(--white);
             margin-bottom: 1.5rem;
         }
+        .opcional-header {
+            display: grid;
+            grid-template-columns: 1fr 180px 180px;
+            gap: 1.5rem;
+            padding: 0.75rem 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.12);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(255,255,255,0.4);
+            font-weight: 600;
+        }
+        .opcional-header > div:nth-child(2),
+        .opcional-header > div:nth-child(3) {
+            text-align: right;
+        }
         .opcional-row {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: 1fr 180px 180px;
+            gap: 1.5rem;
             align-items: center;
             padding: 1.25rem 1.5rem;
             border-bottom: 1px solid rgba(255,255,255,0.06);
@@ -876,6 +893,19 @@
         .opcional-row .info p {
             font-size: 0.82rem;
             color: rgba(255,255,255,0.45);
+        }
+        .opcional-row .mercado {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.4);
+            text-decoration: line-through;
+            text-align: right;
+            white-space: nowrap;
+        }
+        .opcional-row .mercado.na {
+            text-decoration: none;
+            color: rgba(255,255,255,0.25);
+            font-style: italic;
         }
         .opcional-row .precio {
             font-size: 1.1rem;
@@ -1053,7 +1083,12 @@
             .score-grid { grid-template-columns: 1fr 1fr; }
             .platform-table { font-size: 0.8rem; }
             .platform-table th, .platform-table td { padding: 0.75rem 0.75rem; }
-            .opcional-row { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+            .opcional-header { display: none; }
+            .opcional-row { grid-template-columns: 1fr; gap: 0.5rem; }
+            .opcional-row .mercado,
+            .opcional-row .precio { text-align: left; }
+            .opcional-row .mercado::before { content: 'Mercado: '; color: rgba(255,255,255,0.35); font-weight: 500; text-decoration: none; display: inline-block; margin-right: 0.35rem; }
+            .opcional-row .precio::before { content: 'Nuestro precio: '; color: rgba(255,255,255,0.5); font-weight: 500; font-size: 0.82rem; display: inline-block; margin-right: 0.35rem; }
             .arq-node.page { margin-left: 1rem; }
             .arq-node.landing { margin-left: 2rem; }
             .counters { gap: 1.5rem; }
@@ -1572,11 +1607,18 @@
 
         <div class="opcionales-wrap reveal">
             <h3>Servicios opcionales</h3>
+            <p style="font-size:0.85rem;color:rgba(255,255,255,0.5);margin-bottom:1rem;max-width:700px;">Precios de mercado basados en relevamiento de freelancers y agencias en Argentina/LATAM (2025-2026) para el rango medio de cada servicio.</p>
+            <div class="opcional-header">
+                <div>Servicio</div>
+                <div>Precio mercado</div>
+                <div>Nuestro precio</div>
+            </div>
             <div class="opcional-row">
                 <div class="info">
                     <h4><span class="tooltip">Google Ads<span class="tip-icon">i</span><span class="tip-text">Publicidad paga en Google. Cuando alguien busca "psiquiatra CABA", tu centro aparece en los primeros resultados destacados. Solo pagás cuando hacen clic.</span></span></h4>
                     <p>Campañas de búsqueda en CABA — psiquiatría, neurocognitiva, hospital de día. Configuración de medición de resultados.</p>
                 </div>
+                <div class="mercado">$400–700/mes</div>
                 <div class="precio">$200 setup + $150/mes</div>
             </div>
             <div class="opcional-row">
@@ -1584,6 +1626,7 @@
                     <h4>Redes Sociales</h4>
                     <p>Estrategia + creación de contenido Instagram y Facebook. Publicaciones regulares con identidad de marca.</p>
                 </div>
+                <div class="mercado">$500–800/mes</div>
                 <div class="precio">$350/mes</div>
             </div>
             <div class="opcional-row">
@@ -1591,6 +1634,7 @@
                     <h4>Blog / Contenido</h4>
                     <p>Artículos optimizados para posicionamiento orgánico. Contenido educativo sobre salud mental que atrae pacientes desde Google.</p>
                 </div>
+                <div class="mercado">$60–120/artículo</div>
                 <div class="precio">$80/artículo o $250/mes</div>
             </div>
             <div class="opcional-row">
@@ -1598,6 +1642,7 @@
                     <h4>Agente IA — Recordatorios</h4>
                     <p>Recordatorios automáticos de turnos, confirmaciones y cancelaciones vía WhatsApp. Funciona 24/7 sin intervención humana.</p>
                 </div>
+                <div class="mercado">$800 setup + $150/mes</div>
                 <div class="precio">$250 setup + ~$30/mes</div>
             </div>
             <div class="opcional-row">
@@ -1605,6 +1650,7 @@
                     <h4>Chat IA en Web</h4>
                     <p>Asistente inteligente en el sitio que responde consultas básicas y deriva al WhatsApp o formulario.</p>
                 </div>
+                <div class="mercado">$800 setup + $150/mes</div>
                 <div class="precio">$200 setup + ~$25/mes</div>
             </div>
             <div class="opcional-row">
@@ -1612,6 +1658,7 @@
                     <h4>Formulario en Hero de <span class="tooltip">Landings<span class="tip-icon">i</span><span class="tip-text">Las páginas individuales de cada servicio. El formulario aparece directamente al entrar, sin que el paciente tenga que buscarlo.</span></span></h4>
                     <p>Formulario embebido en cada página de servicio (estilo López Ibor). Reduce fricción y aumenta contactos.</p>
                 </div>
+                <div class="mercado na">s/ref</div>
                 <div class="precio">$100</div>
             </div>
             <div class="opcional-row">
@@ -1619,6 +1666,7 @@
                     <h4>Agendamiento Web</h4>
                     <p>Sistema de turnos online con filtro de admisión para pacientes inactivos. Implementable cuando lo decidas.</p>
                 </div>
+                <div class="mercado na">s/ref</div>
                 <div class="precio">$300 setup + $50/mes</div>
             </div>
             <div class="opcional-row">
@@ -1626,6 +1674,7 @@
                     <h4><span class="tooltip">CRM<span class="tip-icon">i</span><span class="tip-text">Sistema centralizado para gestionar pacientes: quién contactó, en qué estado está, historial de comunicación, calendario de turnos, todo en un solo lugar.</span></span> (GoHighLevel)</h4>
                     <p>Gestión completa de pacientes, calendario, automatizaciones. Ecosistema integral.</p>
                 </div>
+                <div class="mercado">$800–1500 setup</div>
                 <div class="precio">$300 setup + $97/mes</div>
             </div>
         </div>
