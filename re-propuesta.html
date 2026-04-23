@@ -1,0 +1,2714 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Re-propuesta ajustada — Centro Médico PROSAM</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --blue-900: #0A1628;
+            --blue-800: #0F2342;
+            --blue-700: #142E54;
+            --blue-600: #1B3A6B;
+            --blue-500: #2A5298;
+            --blue-400: #4A7BC8;
+            --blue-300: #7BA3E0;
+            --blue-200: #B4CEF0;
+            --blue-100: #E8F0FE;
+            --blue-50: #F4F8FE;
+            --teal-500: #089D97;
+            --teal-400: #0CB8B0;
+            --teal-300: #7DBBB0;
+            --teal-100: #D6EFEC;
+            --gold-500: #D4A853;
+            --gold-400: #E8C068;
+            --gold-300: #F0D88A;
+            --gold-100: #FBF4E3;
+            --white: #FFFFFF;
+            --gray-50: #F8FAFB;
+            --gray-100: #F1F4F8;
+            --gray-200: #E2E8F0;
+            --gray-300: #CBD5E1;
+            --gray-400: #94A3B8;
+            --gray-500: #64748B;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1E293B;
+            --red-500: #EF4444;
+            --red-100: #FEE2E2;
+            --green-500: #22C55E;
+            --green-100: #DCFCE7;
+            --amber-500: #F59E0B;
+            --amber-100: #FEF3C7;
+            --radius: 16px;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 24px;
+            --shadow-sm: 0 1px 3px rgba(10,22,40,0.08);
+            --shadow-md: 0 4px 20px rgba(10,22,40,0.1);
+            --shadow-lg: 0 10px 40px rgba(10,22,40,0.12);
+            --shadow-xl: 0 20px 60px rgba(10,22,40,0.15);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: var(--gray-800);
+            background: linear-gradient(180deg, var(--blue-50) 0%, var(--white) 100%);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  HERO                                          */
+        /* ═══════════════════════════════════════════════ */
+        .hero {
+            position: relative;
+            min-height: 90vh;
+            background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-700) 60%, var(--blue-600) 100%);
+            color: var(--white);
+            padding: 120px 0 100px;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(8,157,151,0.18) 0%, transparent 45%),
+                radial-gradient(circle at 85% 80%, rgba(212,168,83,0.12) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .hero-content { position: relative; z-index: 2; text-align: center; }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 22px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 100px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+            backdrop-filter: blur(10px);
+        }
+        .hero-badge .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--teal-400);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--teal-400);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.3); }
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.8rem);
+            font-weight: 600;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            margin-bottom: 28px;
+        }
+        .hero h1 .accent {
+            background: linear-gradient(135deg, var(--teal-300), var(--gold-400));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-style: italic;
+        }
+        .hero-subtitle {
+            font-size: 1.25rem;
+            max-width: 780px;
+            margin: 0 auto 48px;
+            opacity: 0.9;
+            line-height: 1.65;
+        }
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 40px;
+        }
+        .hero-meta-item {
+            text-align: center;
+        }
+        .hero-meta-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--teal-300);
+            margin-bottom: 6px;
+        }
+        .hero-meta-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--white);
+        }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  ALERT URGENTE                                 */
+        /* ═══════════════════════════════════════════════ */
+        .urgent-strip {
+            background: linear-gradient(135deg, #7F1D1D 0%, #991B1B 100%);
+            color: var(--white);
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.95rem;
+            position: relative;
+            border-top: 3px solid var(--gold-400);
+        }
+        .urgent-strip strong { color: var(--gold-300); }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  SECTIONS                                       */
+        /* ═══════════════════════════════════════════════ */
+        .section { padding: 100px 0; }
+        .section-compact { padding: 70px 0; }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-eyebrow {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--teal-500);
+            margin-bottom: 16px;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            line-height: 1.15;
+            color: var(--blue-900);
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  RESUMEN EJECUTIVO                              */
+        /* ═══════════════════════════════════════════════ */
+        .exec-summary {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-200);
+            margin-top: -80px;
+            position: relative;
+            z-index: 10;
+        }
+        .exec-summary h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--blue-900);
+            margin-bottom: 24px;
+        }
+        .exec-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+        .exec-item {
+            padding: 24px;
+            background: var(--blue-50);
+            border-radius: var(--radius-md);
+            border-left: 3px solid var(--teal-500);
+        }
+        .exec-item-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--teal-500);
+            margin-bottom: 8px;
+        }
+        .exec-item-label {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--gray-700);
+            line-height: 1.4;
+        }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  COMPARATIVA STACK                              */
+        /* ═══════════════════════════════════════════════ */
+        .stack-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 40px;
+        }
+        .stack-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            border: 2px solid var(--gray-200);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .stack-card.winner {
+            border-color: var(--teal-500);
+            box-shadow: 0 20px 60px rgba(8,157,151,0.15);
+        }
+        .stack-card.winner::before {
+            content: 'Recomendado para PROSAM';
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--teal-500), var(--teal-400));
+            color: var(--white);
+            padding: 6px 20px;
+            border-radius: 100px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(8,157,151,0.3);
+        }
+        .stack-card-header {
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--gray-200);
+            margin-bottom: 24px;
+        }
+        .stack-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--blue-900);
+            margin-bottom: 6px;
+        }
+        .stack-tagline {
+            font-size: 0.88rem;
+            color: var(--gray-500);
+            font-weight: 500;
+        }
+        .stack-row {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--gray-100);
+            align-items: start;
+        }
+        .stack-row:last-child { border-bottom: none; }
+        .stack-row-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--gray-500);
+        }
+        .stack-row-value {
+            font-size: 0.95rem;
+            color: var(--gray-700);
+            line-height: 1.5;
+        }
+        .stack-row-value .highlight-good {
+            color: var(--teal-500);
+            font-weight: 600;
+        }
+        .stack-row-value .highlight-bad {
+            color: var(--red-500);
+            font-weight: 600;
+        }
+        .stack-cost {
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+        }
+        .stack-cost.winner-cost {
+            background: linear-gradient(135deg, var(--teal-100), var(--blue-50));
+        }
+        .stack-cost-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gray-600);
+            margin-bottom: 6px;
+        }
+        .stack-cost-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--blue-900);
+        }
+        .stack-cost-value .small { font-size: 0.9rem; color: var(--gray-500); font-family: 'Inter'; font-weight: 400; }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  DEMO PANEL                                    */
+        /* ═══════════════════════════════════════════════ */
+        .demo-panel-wrap {
+            background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-700) 100%);
+            padding: 80px 0;
+            margin: 80px 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .demo-panel-wrap::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 10% 10%, rgba(8,157,151,0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(212,168,83,0.08) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        .demo-panel-wrap .section-header { position: relative; z-index: 1; }
+        .demo-panel-wrap .section-eyebrow { color: var(--teal-300); }
+        .demo-panel-wrap .section-title { color: var(--white); }
+        .demo-panel-wrap .section-subtitle { color: rgba(255,255,255,0.75); }
+
+        .demo-panel {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+            margin-top: 50px;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+        .demo-browser-bar {
+            background: #F3F4F6;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .browser-dots {
+            display: flex;
+            gap: 6px;
+        }
+        .browser-dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+        }
+        .browser-dot.red { background: #FF5F57; }
+        .browser-dot.yellow { background: #FEBC2E; }
+        .browser-dot.green { background: #28C840; }
+        .browser-url {
+            flex: 1;
+            background: var(--white);
+            border-radius: 6px;
+            padding: 6px 14px;
+            font-size: 0.78rem;
+            color: var(--gray-500);
+            border: 1px solid var(--gray-200);
+            font-family: 'Inter', monospace;
+        }
+
+        .panel-layout {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            min-height: 600px;
+        }
+
+        /* Sidebar */
+        .panel-sidebar {
+            background: #0F172A;
+            color: var(--white);
+            padding: 24px 0;
+            border-right: 1px solid rgba(255,255,255,0.05);
+        }
+        .panel-logo {
+            padding: 0 24px 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            margin-bottom: 20px;
+        }
+        .panel-logo-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 2px;
+        }
+        .panel-logo-sub {
+            font-size: 0.7rem;
+            color: var(--teal-300);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .panel-section-title {
+            padding: 16px 24px 8px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+        }
+        .panel-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 24px;
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.7);
+            cursor: pointer;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+        .panel-nav-item:hover {
+            background: rgba(255,255,255,0.04);
+            color: var(--white);
+        }
+        .panel-nav-item.active {
+            background: rgba(8,157,151,0.15);
+            color: var(--white);
+            border-left-color: var(--teal-400);
+        }
+        .panel-nav-item .nav-icon {
+            font-size: 1.05rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Main area */
+        .panel-main {
+            padding: 32px 40px;
+            background: #F8FAFC;
+        }
+        .panel-topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
+        }
+        .panel-breadcrumb {
+            font-size: 0.82rem;
+            color: var(--gray-500);
+        }
+        .panel-breadcrumb .active { color: var(--blue-700); font-weight: 600; }
+        .panel-user {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 14px 6px 6px;
+            background: var(--white);
+            border-radius: 100px;
+            border: 1px solid var(--gray-200);
+            font-size: 0.85rem;
+        }
+        .panel-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--teal-500), var(--blue-500));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.78rem;
+        }
+
+        .panel-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        .panel-heading h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--blue-900);
+            font-weight: 600;
+        }
+        .btn-primary {
+            background: var(--blue-600);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+        .btn-primary:hover {
+            background: var(--blue-700);
+            transform: translateY(-1px);
+        }
+        .btn-secondary {
+            background: var(--white);
+            color: var(--gray-700);
+            border: 1px solid var(--gray-300);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .btn-publish {
+            background: var(--teal-500);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Blog list */
+        .blog-list {
+            background: var(--white);
+            border-radius: 12px;
+            border: 1px solid var(--gray-200);
+            overflow: hidden;
+        }
+        .blog-list-head {
+            display: grid;
+            grid-template-columns: 1fr 120px 100px 100px 40px;
+            gap: 16px;
+            padding: 14px 20px;
+            background: var(--gray-50);
+            border-bottom: 1px solid var(--gray-200);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--gray-500);
+        }
+        .blog-row {
+            display: grid;
+            grid-template-columns: 1fr 120px 100px 100px 40px;
+            gap: 16px;
+            padding: 18px 20px;
+            border-bottom: 1px solid var(--gray-100);
+            align-items: center;
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+        .blog-row:hover { background: var(--blue-50); }
+        .blog-row:last-child { border-bottom: none; }
+        .blog-title {
+            font-weight: 600;
+            color: var(--blue-900);
+            font-size: 0.92rem;
+        }
+        .blog-meta {
+            font-size: 0.78rem;
+            color: var(--gray-500);
+            margin-top: 2px;
+        }
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+        }
+        .tag-psiquiatria { background: var(--blue-100); color: var(--blue-700); }
+        .tag-psicologia { background: var(--teal-100); color: var(--teal-500); }
+        .tag-neuro { background: var(--gold-100); color: #8A6F1E; }
+        .tag-ninos { background: #EEF2FF; color: #4F46E5; }
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+        .status .dot-s {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+        }
+        .status.published { color: var(--green-500); }
+        .status.published .dot-s { background: var(--green-500); }
+        .status.draft { color: var(--amber-500); }
+        .status.draft .dot-s { background: var(--amber-500); }
+        .seo-score {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .seo-90 { background: var(--green-100); color: #166534; }
+        .seo-75 { background: var(--amber-100); color: #92400E; }
+        .seo-50 { background: var(--red-100); color: #991B1B; }
+
+        /* Editor servicio */
+        .editor-card {
+            background: var(--white);
+            border-radius: 12px;
+            border: 1px solid var(--gray-200);
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        .editor-row {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .editor-row:last-child { border-bottom: none; }
+        .editor-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--gray-500);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .editor-label .hint {
+            font-size: 0.68rem;
+            color: var(--gray-400);
+            font-weight: 500;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+        .editor-input {
+            width: 100%;
+            padding: 10px 14px;
+            background: var(--white);
+            border: 1.5px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 0.92rem;
+            color: var(--gray-800);
+            font-family: inherit;
+        }
+        .editor-input:focus { outline: none; border-color: var(--teal-500); }
+        .editor-input-display {
+            padding: 10px 14px;
+            background: var(--gray-50);
+            border: 1.5px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 0.92rem;
+            color: var(--gray-800);
+        }
+        .editor-url-preview {
+            padding: 10px 14px;
+            background: var(--blue-50);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: var(--blue-600);
+            font-family: 'Inter', monospace;
+            margin-top: 6px;
+        }
+        .editor-toolbar {
+            display: flex;
+            gap: 4px;
+            padding: 10px 14px;
+            background: var(--gray-50);
+            border: 1.5px solid var(--gray-200);
+            border-bottom: none;
+            border-radius: 8px 8px 0 0;
+        }
+        .toolbar-btn {
+            padding: 6px 10px;
+            background: transparent;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--gray-600);
+            cursor: pointer;
+        }
+        .toolbar-btn:hover { background: var(--white); color: var(--blue-600); }
+        .toolbar-divider { width: 1px; background: var(--gray-300); margin: 4px 4px; }
+        .editor-textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1.5px solid var(--gray-200);
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            font-size: 0.92rem;
+            line-height: 1.7;
+            color: var(--gray-700);
+            font-family: inherit;
+            min-height: 140px;
+        }
+        .image-upload {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background: var(--gray-50);
+            border-radius: 8px;
+            border: 1px dashed var(--gray-300);
+        }
+        .image-preview {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--blue-400), var(--teal-400));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+        .image-meta {
+            flex: 1;
+            font-size: 0.85rem;
+            color: var(--gray-700);
+        }
+        .image-meta .fname { font-weight: 600; color: var(--blue-700); }
+        .image-meta .fsize { color: var(--gray-500); font-size: 0.78rem; margin-top: 2px; }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .pill-team {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: var(--blue-50);
+            border: 1px solid var(--blue-200);
+            border-radius: 100px;
+            font-size: 0.82rem;
+            color: var(--blue-700);
+            font-weight: 500;
+        }
+        .pill-team .x { color: var(--gray-400); cursor: pointer; }
+        .add-item {
+            padding: 6px 14px;
+            background: var(--white);
+            border: 1px dashed var(--gray-300);
+            border-radius: 100px;
+            font-size: 0.82rem;
+            color: var(--gray-500);
+            cursor: pointer;
+        }
+        .seo-preview {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            padding: 14px;
+            margin-top: 12px;
+        }
+        .seo-preview-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--gray-500);
+            margin-bottom: 10px;
+        }
+        .seo-google-title {
+            color: #1A0DAB;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 3px;
+        }
+        .seo-google-url {
+            color: #006621;
+            font-size: 0.78rem;
+            margin-bottom: 3px;
+        }
+        .seo-google-desc {
+            color: #545454;
+            font-size: 0.82rem;
+            line-height: 1.4;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* Demo tabs */
+        .demo-tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 12px;
+            padding: 6px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 12px;
+            max-width: 400px;
+            margin: 0 auto 30px;
+            position: relative;
+            z-index: 1;
+        }
+        .demo-tab {
+            flex: 1;
+            padding: 10px 20px;
+            background: transparent;
+            color: rgba(255,255,255,0.6);
+            border: none;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .demo-tab.active {
+            background: var(--white);
+            color: var(--blue-900);
+        }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  RESPUESTAS                                    */
+        /* ═══════════════════════════════════════════════ */
+        .qa-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--gray-200);
+            margin-bottom: 24px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .qa-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--teal-300);
+        }
+        .qa-header {
+            padding: 28px 32px;
+            border-bottom: 1px solid var(--gray-100);
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+        }
+        .qa-number {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--teal-500), var(--blue-500));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        .qa-title-group { flex: 1; }
+        .qa-question {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gray-500);
+            margin-bottom: 4px;
+        }
+        .qa-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            color: var(--blue-900);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        .qa-body {
+            padding: 28px 32px;
+            color: var(--gray-700);
+            font-size: 1rem;
+        }
+        .qa-body p { margin-bottom: 14px; }
+        .qa-body ul {
+            list-style: none;
+            padding: 0;
+            margin: 14px 0;
+        }
+        .qa-body ul li {
+            padding: 10px 0 10px 28px;
+            position: relative;
+            border-bottom: 1px dashed var(--gray-200);
+        }
+        .qa-body ul li:last-child { border-bottom: none; }
+        .qa-body ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            color: var(--teal-500);
+            font-weight: 700;
+        }
+        .qa-body strong { color: var(--blue-800); font-weight: 700; }
+        .qa-body .highlight-block {
+            background: linear-gradient(135deg, var(--teal-100), var(--blue-50));
+            border-left: 3px solid var(--teal-500);
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 18px 0;
+            font-size: 0.95rem;
+        }
+        .qa-body .note-block {
+            background: var(--amber-100);
+            border-left: 3px solid var(--amber-500);
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin: 16px 0;
+            font-size: 0.9rem;
+            color: #78350F;
+        }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  TIMELINE                                      */
+        /* ═══════════════════════════════════════════════ */
+        .timeline-container {
+            position: relative;
+            margin-top: 50px;
+        }
+        .timeline-line {
+            position: absolute;
+            left: 24px;
+            top: 20px;
+            bottom: 20px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--teal-500), var(--blue-500));
+        }
+        .tl-item {
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 24px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+        .tl-marker {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 3px solid var(--teal-500);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--teal-500);
+            box-shadow: 0 4px 16px rgba(8,157,151,0.2);
+            z-index: 1;
+        }
+        .tl-item.urgent .tl-marker {
+            border-color: var(--red-500);
+            color: var(--red-500);
+            box-shadow: 0 4px 16px rgba(239,68,68,0.3);
+            animation: pulse-urgent 2s ease-in-out infinite;
+        }
+        @keyframes pulse-urgent {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .tl-content {
+            background: var(--white);
+            padding: 24px 28px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--gray-200);
+            box-shadow: var(--shadow-sm);
+        }
+        .tl-week {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--teal-500);
+            margin-bottom: 4px;
+        }
+        .tl-item.urgent .tl-week { color: var(--red-500); }
+        .tl-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--blue-900);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .tl-desc {
+            color: var(--gray-600);
+            font-size: 0.92rem;
+            margin-bottom: 12px;
+        }
+        .tl-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .tl-tag {
+            padding: 3px 10px;
+            background: var(--blue-50);
+            border-radius: 100px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--blue-700);
+        }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  PRICING                                       */
+        /* ═══════════════════════════════════════════════ */
+        .pricing-section {
+            background: linear-gradient(180deg, var(--blue-50) 0%, var(--white) 100%);
+        }
+        .pricing-table {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-200);
+            margin-top: 40px;
+        }
+        .pricing-row-head {
+            display: grid;
+            grid-template-columns: 2.2fr 0.9fr 0.9fr 0.8fr 1.1fr;
+            gap: 16px;
+            padding: 20px 28px;
+            background: linear-gradient(135deg, var(--blue-800), var(--blue-700));
+            color: var(--white);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .pricing-row {
+            display: grid;
+            grid-template-columns: 2.2fr 0.9fr 0.9fr 0.8fr 1.1fr;
+            gap: 16px;
+            padding: 22px 28px;
+            border-bottom: 1px solid var(--gray-100);
+            align-items: center;
+        }
+        .pricing-row:last-child { border-bottom: none; }
+        .pricing-row.highlight {
+            background: linear-gradient(90deg, rgba(212,168,83,0.06), transparent);
+            border-left: 3px solid var(--gold-500);
+        }
+        .pricing-row.urgent-row {
+            background: linear-gradient(90deg, rgba(239,68,68,0.05), transparent);
+            border-left: 3px solid var(--red-500);
+        }
+        .pricing-item-name {
+            font-weight: 600;
+            color: var(--blue-900);
+            font-size: 1rem;
+        }
+        .pricing-item-desc {
+            font-size: 0.82rem;
+            color: var(--gray-500);
+            margin-top: 4px;
+            line-height: 1.5;
+        }
+        .pricing-amount {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--blue-800);
+            font-size: 1.1rem;
+        }
+        .pricing-amount.secondary {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+        }
+        .pricing-total-row {
+            display: grid;
+            grid-template-columns: 2.2fr 0.9fr 0.9fr 0.8fr 1.1fr;
+            gap: 16px;
+            padding: 28px 28px;
+            background: linear-gradient(135deg, var(--teal-100), var(--blue-50));
+            align-items: center;
+        }
+        .pricing-market {
+            font-size: 0.88rem;
+            color: var(--gray-500);
+            font-weight: 500;
+            text-decoration: line-through;
+            text-decoration-color: var(--red-500);
+            text-decoration-thickness: 1.5px;
+        }
+        .pricing-market-note {
+            display: block;
+            font-size: 0.72rem;
+            color: var(--gray-400);
+            font-weight: 400;
+            text-decoration: none;
+            margin-top: 3px;
+            letter-spacing: 0;
+            text-transform: none;
+        }
+        .pricing-total-label {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: var(--blue-900);
+            font-weight: 600;
+        }
+        .pricing-total-amount {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--teal-500);
+            font-weight: 700;
+        }
+
+        .pricing-notes {
+            margin-top: 24px;
+            padding: 20px 28px;
+            background: var(--blue-50);
+            border-radius: var(--radius-md);
+            font-size: 0.88rem;
+            color: var(--gray-700);
+            line-height: 1.7;
+        }
+        .pricing-notes strong { color: var(--blue-800); }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  NEXT STEPS                                    */
+        /* ═══════════════════════════════════════════════ */
+        .next-steps {
+            background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-700) 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        .next-steps::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(8,157,151,0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(212,168,83,0.1) 0%, transparent 50%);
+        }
+        .next-steps .section-title { color: var(--white); }
+        .next-steps .section-eyebrow { color: var(--teal-300); }
+        .next-steps .section-subtitle { color: rgba(255,255,255,0.8); }
+        .needs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+            position: relative;
+        }
+        .need-card {
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: var(--radius-md);
+            padding: 24px;
+        }
+        .need-card.urgent {
+            border-color: rgba(239,68,68,0.5);
+            background: rgba(239,68,68,0.1);
+        }
+        .need-card-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--teal-300);
+            margin-bottom: 12px;
+        }
+        .need-card.urgent .need-card-label { color: #FCA5A5; }
+        .need-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: var(--white);
+            margin-bottom: 14px;
+            font-weight: 600;
+        }
+        .need-list {
+            list-style: none;
+            padding: 0;
+        }
+        .need-list li {
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            color: rgba(255,255,255,0.85);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .need-list li:last-child { border-bottom: none; }
+        .need-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 16px;
+            width: 6px;
+            height: 6px;
+            background: var(--teal-400);
+            border-radius: 50%;
+        }
+        .need-card.urgent .need-list li::before { background: #FCA5A5; }
+
+        .cta-wrap {
+            text-align: center;
+            margin-top: 60px;
+            padding: 48px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+        .cta-wrap h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+        .cta-wrap p {
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 28px;
+            max-width: 540px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            background: linear-gradient(135deg, var(--teal-500), var(--teal-400));
+            color: var(--white);
+            border: none;
+            border-radius: 100px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(8,157,151,0.4);
+            transition: all 0.3s;
+        }
+        .btn-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 36px rgba(8,157,151,0.5);
+        }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  FOOTER                                        */
+        /* ═══════════════════════════════════════════════ */
+        footer {
+            background: #050B18;
+            color: rgba(255,255,255,0.6);
+            padding: 48px 0;
+            text-align: center;
+            font-size: 0.88rem;
+        }
+        footer .brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--white);
+            margin-bottom: 8px;
+            letter-spacing: 0.08em;
+        }
+        footer .sig {
+            margin-top: 16px;
+            opacity: 0.6;
+            font-size: 0.82rem;
+        }
+
+        /* ═══════════════════════════════════════════════ */
+        /*  RESPONSIVE                                    */
+        /* ═══════════════════════════════════════════════ */
+        @media (max-width: 900px) {
+            .stack-compare { grid-template-columns: 1fr; }
+            .panel-layout { grid-template-columns: 1fr; }
+            .panel-sidebar { display: none; }
+            .pricing-row, .pricing-row-head, .pricing-total-row { grid-template-columns: 1fr; gap: 8px; padding: 18px 20px; }
+            .pricing-row-head { display: none; }
+            .pricing-amount::before, .pricing-market::before {
+                content: attr(data-label) ': ';
+                font-weight: 600;
+                color: var(--gray-500);
+                font-size: 0.85rem;
+                margin-right: 8px;
+                font-family: 'Inter';
+                text-decoration: none;
+                color: var(--gray-600);
+            }
+            .grid-2 { grid-template-columns: 1fr; }
+            .blog-list-head { display: none; }
+            .blog-row { grid-template-columns: 1fr; padding: 14px 16px; gap: 8px; }
+            .hero-meta { gap: 24px; }
+            .exec-summary { margin-top: -40px; padding: 28px; }
+            .exec-list { grid-template-columns: 1fr 1fr; }
+            .section, .section-compact { padding: 60px 0; }
+            .container { padding: 0 20px; }
+            .qa-header { padding: 20px; gap: 14px; }
+            .qa-body { padding: 20px; }
+            .qa-number { width: 40px; height: 40px; font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- HERO                                            -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="hero">
+    <div class="container hero-content">
+        <div class="hero-badge">
+            <span class="dot"></span>
+            Propuesta ajustada · Abril 2026
+        </div>
+        <h1>
+            Centro Médico <br>
+            <span class="accent">PROSAM</span> digital
+        </h1>
+        <p class="hero-subtitle">
+            Revisión de la propuesta inicial con las respuestas a todas tus consultas
+            y el plan técnico definitivo: stack, fases, dashboard, pricing en USD y ARS.
+        </p>
+        <div class="hero-meta">
+            <div class="hero-meta-item">
+                <div class="hero-meta-label">Alcance</div>
+                <div class="hero-meta-value">Web + Ads + CRM</div>
+            </div>
+            <div class="hero-meta-item">
+                <div class="hero-meta-label">Plazo</div>
+                <div class="hero-meta-value">6 semanas</div>
+            </div>
+            <div class="hero-meta-item">
+                <div class="hero-meta-label">Acción inmediata</div>
+                <div class="hero-meta-value" style="color: #FCA5A5;">Hosting ventana 7 días</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- ALERTA URGENTE                                   -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="urgent-strip">
+    <div class="container">
+        <strong>⚠ URGENTE:</strong> Tu hosting actual vence el <strong>30 de abril</strong>.
+        Tenemos 7 días para migrar. Ver <strong>punto 2</strong> con la solución propuesta.
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- RESUMEN EJECUTIVO                                -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="section-compact">
+    <div class="container">
+        <div class="exec-summary">
+            <h2>Resumen ejecutivo</h2>
+            <p style="color: var(--gray-600); font-size: 1.02rem;">
+                Esta propuesta ajustada responde cada una de tus consultas, propone un plan
+                técnico sólido y sostenible, y te da visibilidad total sobre la inversión.
+                Todo está pensado para que <strong style="color: var(--blue-800)">vos puedas
+                administrar el sitio sin código</strong> y tengas <strong style="color: var(--blue-800)">
+                control en tiempo real</strong> sobre el rendimiento de Google Ads.
+            </p>
+            <div class="exec-list">
+                <div class="exec-item">
+                    <div class="exec-item-num">100%</div>
+                    <div class="exec-item-label">Todas las cuentas (hosting, correo, Ads) a tu nombre</div>
+                </div>
+                <div class="exec-item">
+                    <div class="exec-item-num">24/7</div>
+                    <div class="exec-item-label">Panel de métricas con la marca de PROSAM</div>
+                </div>
+                <div class="exec-item">
+                    <div class="exec-item-num">7</div>
+                    <div class="exec-item-label">Páginas de servicios optimizadas para Google</div>
+                </div>
+                <div class="exec-item">
+                    <div class="exec-item-num">0</div>
+                    <div class="exec-item-label">Conocimiento técnico que necesitás para editar</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- STACK COMPARATIVA                                -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-eyebrow">Decisión técnica</div>
+            <h2 class="section-title">¿Webflow o algo mejor?</h2>
+            <p class="section-subtitle">
+                En la conversación hablamos de Webflow. Te comparto abajo las dos opciones
+                que tenemos sobre la mesa y por qué te recomiendo una u otra.
+            </p>
+        </div>
+
+        <div style="max-width: 820px; margin: 0 auto 40px; padding: 20px 28px; background: var(--gold-100); border-radius: 12px; border-left: 3px solid var(--gold-500);">
+            <p style="font-size: 0.95rem; color: #78350F; margin: 0;">
+                <strong>💡 Antes de que leas esto:</strong> Webflow y Next.js son dos
+                "herramientas" distintas para hacer tu web. Piensa en ellas como dos
+                constructoras diferentes: las dos te entregan una casa, pero una es más
+                cara de mantener y otra te da más libertad para agrandarla. Lo que te
+                importa a vos (editar vos misma, tener buena presencia en Google, poder
+                crecer después) lo podés lograr con las dos — pero con costos y resultados
+                distintos.
+            </p>
+        </div>
+
+        <div class="stack-compare">
+            <!-- WEBFLOW -->
+            <div class="stack-card">
+                <div class="stack-card-header">
+                    <div class="stack-name">Webflow</div>
+                    <div class="stack-tagline">Plataforma todo-en-uno con plantillas prearmadas</div>
+                </div>
+                <div class="stack-row">
+                    <div class="stack-row-label">¿Podés editar sola?</div>
+                    <div class="stack-row-value"><span class="highlight-good">Sí</span> — editor visual, hacés clic y cambiás el texto</div>
+                </div>
+                <div class="stack-row">
+                    <div class="stack-row-label">Aparecer en Google</div>
+                    <div class="stack-row-value">Funciona bien, pero limitado a lo que permite la plataforma</div>
+                </div>
+                <div class="stack-row">
+                    <div class="stack-row-label">Que Google entienda que sos una clínica médica</div>
+                    <div class="stack-row-value"><span class="highlight-bad">Parcial</span> — no se puede configurar con todo el detalle médico</div>
+                </div>
+                <div class="stack-row">
+                    <div class="stack-row-label">Sumar bots de WhatsApp y CRM después (Fase 2)</div>
+                    <div class="stack-row-value"><span class="highlight-bad">Requiere intermediario</span> — necesita Zapier o Make para conectarse con el CRM (USD 20 a 50 por mes extra, además del CRM)</div>
+                </div>
+                <div class="stack-row">
+                    <div class="stack-row-label">Sitios míos para mostrarte</div>
+                    <div class="stack-row-value"><span class="highlight-bad">No trabajo con esta plataforma</span>, no puedo mostrarte ejemplos propios</div>
+                </div>
+                <div class="stack-row">
+                    <div class="stack-row-label">Mantenimiento mensual</div>
+                    <div class="stack-row-value">USD 23 a 29 por mes (para siempre, mientras la web esté online)</div>
+                </div>
+                <div class="stack-cost">
+                    <div class="stack-cost-label">Lo que pagás al año</div>
+                    <div class="stack-cost-value">USD 276 <span class="small">/ año + dominio</span></div>
+                </div>
+            </div>
+
+            <!-- NEXT.JS + PAYLOAD -->
+            <div class="stack-card winner">
+                <div class="stack-card-header">
+                    <div class="stack-name">Tecnología moderna a medida</div>
+                    <div class="stack-tagline">(Next.js + Payload) — el mismo stack que uso en mis otros 3 proyectos</div>
+                </div>
+                <div class="stack-row">
+                    <div class="stack-row-label">¿Podés editar sola?</div>
+                    <div class="stack-row-value"><span class="highlight-good">Sí</span> — panel visual con guía integrada (te muestro la demo abajo ↓)</div>
+                </div>
+                <div class="stack-row">
+                    <div class="stack-row-label">Aparecer en Google</div>
+                    <div class="stack-row-value"><span class="highlight-good">Optimización total</span> — sitio que carga en menos de 2 segundos (Google premia la velocidad)</div>
+                </div>
+                <div class="stack-row">
+                    <div class="stack-row-label">Que Google entienda que sos una clínica médica</div>
+                    <div class="stack-row-value"><span class="highlight-good">Completo</span> — configuración médica detallada (especialidades, profesionales, servicios)</div>
+                </div>
+                <div class="stack-row">
+                    <div class="stack-row-label">Sumar bots de WhatsApp y CRM después (Fase 2)</div>
+                    <div class="stack-row-value"><span class="highlight-good">Conexión directa</span> — se conecta con el CRM por código, sin pagar Zapier ni Make como intermediario (ahorro de USD 20 a 50 por mes)</div>
+                </div>
+                <div class="stack-row">
+                    <div class="stack-row-label">Sitios míos para mostrarte</div>
+                    <div class="stack-row-value"><span class="highlight-good">3 sitios en vivo</span> hechos con esta misma tecnología</div>
+                </div>
+                <div class="stack-row">
+                    <div class="stack-row-label">Mantenimiento mensual</div>
+                    <div class="stack-row-value">USD 0 a 15 por mes (usa el plan gratuito de Google / Vercel mientras no superes el tráfico)</div>
+                </div>
+                <div class="stack-cost winner-cost">
+                    <div class="stack-cost-label">Lo que pagás al año</div>
+                    <div class="stack-cost-value">USD 0 a 180 <span class="small">/ año + dominio</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="qa-body" style="max-width: 820px; margin: 40px auto 0;">
+            <div class="highlight-block">
+                <strong>En simple:</strong> las dos opciones te dejan editar la web
+                vos misma sin saber nada de código. La diferencia es el precio, la
+                visibilidad en Google y qué tan preparada queda tu web para crecer.
+                Con la <strong>opción recomendada</strong> ahorrás entre
+                <strong>USD 90 y USD 276 por año</strong>, tu web aparece mejor posicionada
+                en Google, y cuando quieras sumar bots de WhatsApp o un CRM para gestionar
+                pacientes, se conecta directo — sin rehacer nada.<br><br>
+                <strong>Si preferís Webflow igual, lo hacemos</strong> — pero con honestidad
+                te recomiendo la otra opción.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- DEMO DEL PANEL                                  -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="demo-panel-wrap">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-eyebrow">Así vas a administrar tu web</div>
+            <h2 class="section-title">Tu panel para editar todo</h2>
+            <p class="section-subtitle">
+                Esta es la pantalla que se te abre cuando entres a
+                <strong style="color: var(--gold-300)">cmprosam.com.ar/admin</strong>
+                con tu usuario y contraseña. Editás como en Word o Google Docs:
+                hacés clic, escribís, y le das a "Publicar". Sin riesgo de romper nada.
+            </p>
+        </div>
+
+        <div style="max-width: 780px; margin: 0 auto 30px; padding: 16px 24px; background: rgba(255,255,255,0.08); border-radius: 12px; border: 1px solid rgba(255,255,255,0.15); position: relative; z-index: 1;">
+            <p style="font-size: 0.92rem; color: rgba(255,255,255,0.85); margin: 0; text-align: center;">
+                👇 Podés hacer clic en las pestañas <strong style="color: var(--gold-300)">"Blog"</strong> y
+                <strong style="color: var(--gold-300)">"Servicio"</strong> abajo para ver cómo se ve cada pantalla
+            </p>
+        </div>
+
+        <div class="demo-tabs">
+            <button class="demo-tab active" onclick="switchDemo('blog')">Blog</button>
+            <button class="demo-tab" onclick="switchDemo('servicio')">Servicio</button>
+        </div>
+
+        <!-- DEMO PANEL -->
+        <div class="demo-panel">
+            <div class="demo-browser-bar">
+                <div class="browser-dots">
+                    <div class="browser-dot red"></div>
+                    <div class="browser-dot yellow"></div>
+                    <div class="browser-dot green"></div>
+                </div>
+                <div class="browser-url">🔒 cmprosam.com.ar/admin</div>
+            </div>
+
+            <div class="panel-layout">
+                <!-- SIDEBAR -->
+                <aside class="panel-sidebar">
+                    <div class="panel-logo">
+                        <div class="panel-logo-title">PROSAM</div>
+                        <div class="panel-logo-sub">Admin</div>
+                    </div>
+
+                    <div class="panel-section-title">Contenido</div>
+                    <div class="panel-nav-item" id="nav-blog">
+                        <span class="nav-icon">📰</span> Blog
+                    </div>
+                    <div class="panel-nav-item" id="nav-servicio">
+                        <span class="nav-icon">🏥</span> Servicios
+                    </div>
+                    <div class="panel-nav-item">
+                        <span class="nav-icon">📄</span> Páginas
+                    </div>
+                    <div class="panel-nav-item">
+                        <span class="nav-icon">🏢</span> Coberturas
+                    </div>
+
+                    <div class="panel-section-title">Configuración</div>
+                    <div class="panel-nav-item">
+                        <span class="nav-icon">⚙️</span> General
+                    </div>
+                    <div class="panel-nav-item">
+                        <span class="nav-icon">🖼️</span> Medios
+                    </div>
+                    <div class="panel-nav-item">
+                        <span class="nav-icon">📊</span> Métricas
+                    </div>
+                </aside>
+
+                <!-- MAIN -->
+                <div class="panel-main">
+                    <!-- TOPBAR -->
+                    <div class="panel-topbar">
+                        <div class="panel-breadcrumb">
+                            Dashboard › <span class="active" id="bc-active">Blog</span>
+                        </div>
+                        <div class="panel-user">
+                            <div class="panel-avatar">R</div>
+                            Dra. Rosario
+                        </div>
+                    </div>
+
+                    <!-- VISTA BLOG -->
+                    <div id="view-blog">
+                        <div class="panel-heading">
+                            <h3>Blog</h3>
+                            <button class="btn-primary">+ Nuevo artículo</button>
+                        </div>
+
+                        <div class="blog-list">
+                            <div class="blog-list-head">
+                                <div>Artículo</div>
+                                <div>Categoría</div>
+                                <div>Estado</div>
+                                <div>SEO Score</div>
+                                <div></div>
+                            </div>
+
+                            <div class="blog-row">
+                                <div>
+                                    <div class="blog-title">¿Qué es el TDAH en adultos? Guía completa 2026</div>
+                                    <div class="blog-meta">Publicado hace 2 días · 1.847 visitas · 6 min de lectura</div>
+                                </div>
+                                <div><span class="tag tag-psiquiatria">Psiquiatría</span></div>
+                                <div><span class="status published"><span class="dot-s"></span>Publicado</span></div>
+                                <div><span class="seo-score seo-90">92/100</span></div>
+                                <div style="color: var(--gray-400); font-size: 1.2rem;">⋮</div>
+                                    </div>
+
+                            <div class="blog-row">
+                                <div>
+                                    <div class="blog-title">Evaluación neurocognitiva: cuándo y por qué hacerla</div>
+                                    <div class="blog-meta">Publicado hace 5 días · 923 visitas · 4 min de lectura</div>
+                                </div>
+                                <div><span class="tag tag-neuro">Neurocognitivo</span></div>
+                                <div><span class="status published"><span class="dot-s"></span>Publicado</span></div>
+                                <div><span class="seo-score seo-90">88/100</span></div>
+                                <div style="color: var(--gray-400); font-size: 1.2rem;">⋮</div>
+                            </div>
+
+                            <div class="blog-row">
+                                <div>
+                                    <div class="blog-title">Ansiedad generalizada: señales de alerta y tratamientos</div>
+                                    <div class="blog-meta">Borrador · Última edición hace 1 hora · 3 min de lectura</div>
+                                </div>
+                                <div><span class="tag tag-psicologia">Psicología</span></div>
+                                <div><span class="status draft"><span class="dot-s"></span>Borrador</span></div>
+                                <div><span class="seo-score seo-75">74/100</span></div>
+                                <div style="color: var(--gray-400); font-size: 1.2rem;">⋮</div>
+                            </div>
+
+                            <div class="blog-row">
+                                <div>
+                                    <div class="blog-title">Diferencia entre psicólogo y psiquiatra: cuándo consultar a cada uno</div>
+                                    <div class="blog-meta">Publicado hace 1 semana · 2.104 visitas · 5 min de lectura</div>
+                                </div>
+                                <div><span class="tag tag-psiquiatria">Psiquiatría</span></div>
+                                <div><span class="status published"><span class="dot-s"></span>Publicado</span></div>
+                                <div><span class="seo-score seo-90">95/100</span></div>
+                                <div style="color: var(--gray-400); font-size: 1.2rem;">⋮</div>
+                            </div>
+
+                            <div class="blog-row">
+                                <div>
+                                    <div class="blog-title">Taller de memoria para adultos mayores: qué es y a quién le sirve</div>
+                                    <div class="blog-meta">Borrador · Última edición ayer · 4 min de lectura</div>
+                                </div>
+                                <div><span class="tag tag-neuro">Neurocognitivo</span></div>
+                                <div><span class="status draft"><span class="dot-s"></span>Borrador</span></div>
+                                <div><span class="seo-score seo-75">68/100</span></div>
+                                <div style="color: var(--gray-400); font-size: 1.2rem;">⋮</div>
+                            </div>
+
+                            <div class="blog-row">
+                                <div>
+                                    <div class="blog-title">Hospital de día: ¿qué es y cuándo se indica?</div>
+                                    <div class="blog-meta">Publicado hace 2 semanas · 567 visitas · 3 min de lectura</div>
+                                </div>
+                                <div><span class="tag tag-psiquiatria">Psiquiatría</span></div>
+                                <div><span class="status published"><span class="dot-s"></span>Publicado</span></div>
+                                <div><span class="seo-score seo-90">89/100</span></div>
+                                <div style="color: var(--gray-400); font-size: 1.2rem;">⋮</div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 20px; padding: 18px; background: var(--blue-50); border-radius: 10px; font-size: 0.88rem; color: var(--gray-700); border-left: 3px solid var(--blue-500);">
+                            <strong style="color: var(--blue-800);">✨ Puntaje de visibilidad en Google (automático):</strong>
+                            Cada artículo tiene un puntaje del 1 al 100 — te avisa si el título,
+                            la descripción, las palabras clave y los subtítulos están bien armados
+                            para que Google lo muestre cuando alguien busca. Ves el puntaje
+                            al lado de cada artículo y sabés qué ajustar sin saber nada técnico.
+                        </div>
+                    </div>
+
+                    <!-- VISTA SERVICIO -->
+                    <div id="view-servicio" style="display: none;">
+                        <div class="panel-heading">
+                            <h3>Editar servicio</h3>
+                            <div style="display: flex; gap: 10px;">
+                                <button class="btn-secondary">Guardar borrador</button>
+                                <button class="btn-publish">✓ Publicar</button>
+                            </div>
+                        </div>
+
+                        <div class="editor-card">
+                            <div class="editor-row">
+                                <div class="editor-label">Nombre del servicio</div>
+                                <div class="editor-input-display">Evaluación Neurocognitiva</div>
+                            </div>
+
+                            <div class="editor-row">
+                                <div class="editor-label">
+                                    Dirección web de la página
+                                    <span class="hint">— se genera automáticamente desde el nombre del servicio</span>
+                                </div>
+                                <div class="editor-input-display">evaluacion-neurocognitiva</div>
+                                <div class="editor-url-preview">
+                                    Así se ve la dirección: cmprosam.com.ar/servicios/evaluacion-neurocognitiva
+                                </div>
+                            </div>
+
+                            <div class="editor-row">
+                                <div class="editor-label">Imagen destacada</div>
+                                <div class="image-upload">
+                                    <div class="image-preview">🧠</div>
+                                    <div class="image-meta">
+                                        <div class="fname">evaluacion-neurocognitiva-hero.jpg</div>
+                                        <div class="fsize">1920×1080 · 284 KB · optimizada automáticamente</div>
+                                    </div>
+                                    <button class="btn-secondary">Cambiar</button>
+                                </div>
+                            </div>
+
+                            <div class="editor-row">
+                                <div class="editor-label">Descripción corta <span class="hint">— para tarjetas en la home</span></div>
+                                <textarea class="editor-input" rows="2">Estudio integral que evalúa memoria, atención, lenguaje y funciones ejecutivas. Útil ante cambios cognitivos, pre-diagnóstico o seguimiento.</textarea>
+                            </div>
+
+                            <div class="editor-row">
+                                <div class="editor-label">Contenido completo</div>
+                                <div class="editor-toolbar">
+                                    <button class="toolbar-btn"><strong>B</strong></button>
+                                    <button class="toolbar-btn"><em>I</em></button>
+                                    <button class="toolbar-btn"><u>U</u></button>
+                                    <div class="toolbar-divider"></div>
+                                    <button class="toolbar-btn">H1</button>
+                                    <button class="toolbar-btn">H2</button>
+                                    <button class="toolbar-btn">H3</button>
+                                    <div class="toolbar-divider"></div>
+                                    <button class="toolbar-btn">🔗</button>
+                                    <button class="toolbar-btn">📷</button>
+                                    <button class="toolbar-btn">≡</button>
+                                </div>
+                                <textarea class="editor-textarea">## ¿Qué es una evaluación neurocognitiva?
+
+La evaluación neurocognitiva es un estudio integral que permite medir de forma objetiva el funcionamiento de áreas clave del cerebro: memoria, atención, concentración, lenguaje, habilidades visuoespaciales y funciones ejecutivas.
+
+## ¿Cuándo está indicada?
+
+- Cambios en la memoria o la atención
+- Evaluación pre-diagnóstica de deterioro cognitivo
+- Seguimiento en tratamientos neurológicos o psiquiátricos</textarea>
+                            </div>
+
+                            <div class="editor-row">
+                                <div class="editor-label">Profesionales asociados</div>
+                                <div class="tag-list">
+                                    <span class="pill-team">Dr. Martínez <span class="x">×</span></span>
+                                    <span class="pill-team">Lic. Fernández <span class="x">×</span></span>
+                                    <span class="add-item">+ Agregar</span>
+                                </div>
+                            </div>
+
+                            <div class="editor-row">
+                                <div class="editor-label">
+                                    Cómo se va a ver en Google
+                                    <span class="hint">— así aparece cuando alguien busca "evaluación neurocognitiva CABA"</span>
+                                </div>
+                                <div class="grid-2" style="margin-bottom: 16px;">
+                                    <div>
+                                        <label style="font-size: 0.78rem; color: var(--gray-600); font-weight: 600;">Título que ve Google</label>
+                                        <input class="editor-input" value="Evaluación Neurocognitiva CABA — Centro Médico PROSAM" style="margin-top: 6px;">
+                                    </div>
+                                    <div>
+                                        <label style="font-size: 0.78rem; color: var(--gray-600); font-weight: 600;">Descripción que ve Google</label>
+                                        <input class="editor-input" value="Evaluaciones neurocognitivas con neuropsicólogos especializados. Más de 30 años en CABA." style="margin-top: 6px;">
+                                    </div>
+                                </div>
+
+                                <div class="seo-preview">
+                                    <div class="seo-preview-title">Así se ve en los resultados de Google</div>
+                                    <div class="seo-google-title">Evaluación Neurocognitiva CABA — Centro Médico PROSAM</div>
+                                    <div class="seo-google-url">cmprosam.com.ar › servicios › evaluacion-neurocognitiva</div>
+                                    <div class="seo-google-desc">Evaluaciones neurocognitivas con neuropsicólogos especializados. Más de 30 años en CABA.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 20px; padding: 18px; background: var(--teal-100); border-radius: 10px; font-size: 0.88rem; color: #0F766E; border-left: 3px solid var(--teal-500);">
+                            <strong>🧠 Asistente integrado para que tu web aparezca en Google:</strong>
+                            El panel te guía con sugerencias automáticas — qué largo ideal tiene que
+                            tener el título, qué palabras clave usar en cada servicio, cómo ordenar
+                            el contenido. Vos escribís, el sistema te guía. No necesitás saber nada
+                            técnico.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- 7 RESPUESTAS                                    -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-eyebrow">Respuestas a tus consultas</div>
+            <h2 class="section-title">Los 7 puntos que me preguntaste</h2>
+            <p class="section-subtitle">
+                Respuestas concretas y sin rodeos a cada una de tus preguntas.
+            </p>
+        </div>
+
+        <!-- Q1 -->
+        <div class="qa-card">
+            <div class="qa-header">
+                <div class="qa-number">1</div>
+                <div class="qa-title-group">
+                    <div class="qa-question">Portfolio</div>
+                    <div class="qa-title">¿Tenés sitios Webflow live que pueda ver?</div>
+                </div>
+            </div>
+            <div class="qa-body">
+                <p>Con honestidad: <strong>no tengo sitios Webflow live</strong>. Trabajo en un stack distinto (Next.js + CMS) con el que te puedo dar exactamente lo mismo que Webflow en tu experiencia de edición.</p>
+
+                <p>Te paso 3 sitios que hice en el mismo stack que te estoy proponiendo — son todos proyectos reales en producción:</p>
+
+                <ul>
+                    <li><strong>Antoá</strong> (centro estético UY) — sitio web + CRM + agentes IA + Meta Ads. Servicio 360 similar al que te propongo.</li>
+                    <li><strong>FabrIQ</strong> (SaaS B2B para fabricantes de alimentos) — plataforma completa con panel de administración, pagos y facturación.</li>
+                    <li><strong>GymApp</strong> (SaaS para gimnasios) — demo con CrossFit Impulso, 150 socios, datos de 12 meses.</li>
+                </ul>
+
+                <div class="highlight-block">
+                    <strong>En la reunión te muestro los 3 sitios en vivo</strong>, incluyendo los paneles de administración — así ves cómo vas a editar el tuyo antes de arrancar.
+                </div>
+            </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="qa-card">
+            <div class="qa-header">
+                <div class="qa-number">2</div>
+                <div class="qa-title-group">
+                    <div class="qa-question">Hosting urgente</div>
+                    <div class="qa-title">Migración antes del 30 de abril</div>
+                </div>
+            </div>
+            <div class="qa-body">
+                <p><strong>Me ocupo yo.</strong> En vez de migrar tu sitio actual (que tiene muchos problemas técnicos igual), <strong>lanzamos la landing nueva directo en un hosting mejor</strong> y apuntamos cmprosam.com.ar ahí.</p>
+
+                <p>Ganás:</p>
+                <ul>
+                    <li>No se cae tu web el 30 de abril</li>
+                    <li>Estrenás algo actualizado desde día 1</li>
+                    <li>Podés arrancar con Google Ads inmediatamente</li>
+                    <li>Dejás de pagar un hosting caro por algo que igual vamos a reemplazar</li>
+                </ul>
+
+                <div class="highlight-block">
+                    <strong>Plazo real:</strong> 5 días hábiles.<br>
+                    <strong>La migración en sí no tiene cargo aparte</strong> — se hace aprovechando el mismo trabajo de configuración de la landing básica (que sí tiene su costo, ver punto 3).<br>
+                    <strong>Correos @cmprosam.com.ar:</strong> si los usan, los mantenemos funcionando sin pérdida de mensajes.
+                </div>
+
+                <p style="margin-top: 18px; font-size: 1rem;">
+                    👇 En el siguiente bloque te explico <strong>cómo te conviene ordenar todo</strong>
+                    (hosting + dominio + correo) para pagar menos y que <strong>todo quede a tu nombre</strong>.
+                </p>
+            </div>
+        </div>
+
+        <!-- ARQUITECTURA HOSTING · DOMINIO · CORREO -->
+        <div class="qa-card" style="border: 2px solid var(--gold-400); background: linear-gradient(135deg, #FFFDF7 0%, #FFFFFF 100%);">
+            <div class="qa-header" style="background: linear-gradient(135deg, var(--gold-100), #FFFDF7);">
+                <div class="qa-number" style="background: linear-gradient(135deg, var(--gold-500), var(--gold-400));">🔑</div>
+                <div class="qa-title-group">
+                    <div class="qa-question" style="color: #78350F;">Muy importante</div>
+                    <div class="qa-title">Vos sos la dueña de cada cuenta — siempre</div>
+                </div>
+            </div>
+            <div class="qa-body">
+                <div style="background: linear-gradient(135deg, var(--gold-100), #FFFDF7); border-left: 4px solid var(--gold-500); padding: 24px 28px; border-radius: 12px; margin-bottom: 28px;">
+                    <p style="font-size: 1.05rem; color: #78350F; margin: 0; line-height: 1.65;">
+                        <strong>Quiero que te quede claro desde el primer día:</strong>
+                        todas las cuentas se crean a tu nombre (PROSAM). Yo entro como
+                        <strong>administrador colaborador</strong> para configurar, gestionar y
+                        mantener todo funcionando — pero <strong>la dueña de cada plataforma
+                        sos vos</strong>. Si algún día no querés trabajar más conmigo, me sacás
+                        el acceso y te llevás absolutamente todo sin perder nada. Vos tenés
+                        las llaves; yo sólo tengo una copia para hacer mi trabajo.
+                    </p>
+                </div>
+
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--blue-900); margin-bottom: 14px; font-weight: 600;">
+                    Cómo separamos lo que hoy pagás junto
+                </h3>
+                <p>
+                    Hoy probablemente tenés <strong>hosting + dominio + correo</strong>
+                    todo con el mismo proveedor (por eso te sale caro y el servicio es
+                    regular). Mi propuesta: separarlos en 3 cuentas independientes,
+                    cada una en la plataforma que mejor hace cada cosa. Resultado:
+                    <strong>pagás menos y tenés mejor servicio en cada cosa.</strong>
+                </p>
+
+                <!-- DIAGRAMA 3 CAPAS -->
+                <div style="display: grid; grid-template-columns: 1fr; gap: 16px; margin: 28px 0;">
+                    <div style="background: var(--white); border: 1.5px solid var(--blue-200); border-radius: 14px; padding: 22px 26px; box-shadow: var(--shadow-sm); position: relative;">
+                        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 12px;">
+                            <div style="width: 52px; height: 52px; background: linear-gradient(135deg, var(--blue-600), var(--blue-500)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; flex-shrink: 0;">🌐</div>
+                            <div>
+                                <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue-600); margin-bottom: 2px;">Capa 1 · Tu dirección web</div>
+                                <div style="font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 600; color: var(--blue-900);">Dominio cmprosam.com.ar</div>
+                            </div>
+                        </div>
+                        <div style="font-size: 0.95rem; color: var(--gray-700); line-height: 1.6; padding-left: 68px;">
+                            <strong>¿Dónde se guarda?</strong> En <strong>NIC.ar</strong> (organismo oficial argentino, único autorizado para dominios .com.ar). Es el registro público — tu "título de propiedad" del dominio.<br>
+                            <strong>¿A nombre de quién queda?</strong> Del <strong>CUIT de Centro Médico PROSAM</strong> — es tuyo para siempre.<br>
+                            <strong>¿Costo?</strong> Aproximadamente <strong>$5.000 al año</strong>, se renueva una sola vez por año.<br>
+                            <strong>¿Yo qué hago acá?</strong> Entro con tu usuario a configurar a dónde "apunta" el dominio (al hosting nuevo y al correo). No soy dueño de nada — sólo hago el cableado técnico.
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; color: var(--gray-400); font-size: 1.4rem; margin: 0;">↓ apunta a ↓</div>
+
+                    <div style="background: var(--white); border: 1.5px solid var(--teal-300); border-radius: 14px; padding: 22px 26px; box-shadow: var(--shadow-sm); position: relative;">
+                        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 12px;">
+                            <div style="width: 52px; height: 52px; background: linear-gradient(135deg, var(--teal-500), var(--teal-400)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; flex-shrink: 0;">💻</div>
+                            <div>
+                                <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-500); margin-bottom: 2px;">Capa 2 · Donde vive la web</div>
+                                <div style="font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 600; color: var(--blue-900);">Hosting en Vercel</div>
+                            </div>
+                        </div>
+                        <div style="font-size: 0.95rem; color: var(--gray-700); line-height: 1.6; padding-left: 68px;">
+                            <strong>¿Qué es Vercel?</strong> La plataforma de hosting más moderna que existe. La usan Nike, Loreal, The Washington Post — sitios que necesitan cargar rápido y no caerse nunca.<br>
+                            <strong>¿A nombre de quién queda?</strong> Creamos la cuenta con <strong>tu email de PROSAM</strong> — sos la dueña de la cuenta.<br>
+                            <strong>¿Costo?</strong> <strong>USD 0 al mes</strong> mientras no superes cierto tráfico (PROSAM va a estar muy lejos de superarlo). Si en algún momento crecés mucho, pasa a USD 20/mes. Lo avisa con tiempo.<br>
+                            <strong>¿Yo qué hago acá?</strong> Me agregás como "colaborador" — subo la web, hago cambios, resuelvo problemas. Si me sacás el acceso, el sitio sigue funcionando normal con tu cuenta.
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; color: var(--gray-400); font-size: 1.4rem; margin: 0;">+ también apunta a +</div>
+
+                    <div style="background: var(--white); border: 1.5px solid #EF8E8E; border-radius: 14px; padding: 22px 26px; box-shadow: var(--shadow-sm); position: relative;">
+                        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 12px;">
+                            <div style="width: 52px; height: 52px; background: linear-gradient(135deg, #EA4335, #FBBC04); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; flex-shrink: 0;">✉️</div>
+                            <div>
+                                <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #DC2626; margin-bottom: 2px;">Capa 3 · Tus correos empresariales</div>
+                                <div style="font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 600; color: var(--blue-900);">Google Workspace</div>
+                            </div>
+                        </div>
+                        <div style="font-size: 0.95rem; color: var(--gray-700); line-height: 1.6; padding-left: 68px;">
+                            <strong>¿Qué es Google Workspace?</strong> Es Gmail pero profesional. Tus correos @cmprosam.com.ar con toda la calidad de Gmail: filtros anti-spam, buscador, Drive, Calendar, Meet — todo integrado.<br>
+                            <strong>¿A nombre de quién queda?</strong> Cuenta empresarial a nombre de <strong>Centro Médico PROSAM</strong>.<br>
+                            <strong>¿Costo?</strong> <strong>USD 6 por mes por casilla de correo</strong>. Si tenés 3 correos (recepción, administración, dirección), son USD 18/mes.<br>
+                            <strong>¿Qué incluye además del correo?</strong> Google Calendar compartido (útil para que las chicas coordinen turnos), Google Drive con 30 GB por casilla, videollamadas Meet, y Google Docs/Sheets/Forms.<br>
+                            <strong>¿Yo qué hago acá?</strong> Te configuro todo, migro tus correos viejos (si los querés conservar) y te doy el acceso de administradora. Desde ese momento vos manejás quién tiene correo y quién no.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COMPARATIVA COSTOS -->
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--blue-900); margin: 36px 0 16px; font-weight: 600;">
+                    Lo que probablemente estás pagando hoy vs. lo que vas a pagar
+                </h3>
+                <div style="background: var(--white); border-radius: 14px; overflow: hidden; border: 1px solid var(--gray-200); box-shadow: var(--shadow-sm);">
+                    <div style="display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 10px; padding: 16px 24px; background: linear-gradient(135deg, var(--blue-800), var(--blue-700)); color: white; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">
+                        <div>Concepto</div>
+                        <div style="text-align: right;">HOY (estimado)</div>
+                        <div style="text-align: right;">Con la propuesta</div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 10px; padding: 16px 24px; border-bottom: 1px solid var(--gray-100); align-items: center;">
+                        <div style="font-weight: 600; color: var(--gray-800);">Hosting de la web</div>
+                        <div style="text-align: right; color: var(--red-500); font-weight: 600;">USD 30 a 60 /mes</div>
+                        <div style="text-align: right; color: var(--teal-500); font-weight: 700;">USD 0 a 15 /mes</div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 10px; padding: 16px 24px; border-bottom: 1px solid var(--gray-100); align-items: center;">
+                        <div style="font-weight: 600; color: var(--gray-800);">Correos @cmprosam.com.ar</div>
+                        <div style="text-align: right; color: var(--gray-600); font-weight: 500;">Incluido (calidad baja)</div>
+                        <div style="text-align: right; color: var(--teal-500); font-weight: 700;">USD 6 /mes × correo</div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 10px; padding: 16px 24px; border-bottom: 1px solid var(--gray-100); align-items: center;">
+                        <div style="font-weight: 600; color: var(--gray-800);">Dominio cmprosam.com.ar</div>
+                        <div style="text-align: right; color: var(--gray-600); font-weight: 500;">~$5.000 /año</div>
+                        <div style="text-align: right; color: var(--gray-600); font-weight: 500;">~$5.000 /año (igual)</div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 10px; padding: 18px 24px; background: linear-gradient(135deg, var(--teal-100), var(--blue-50)); align-items: center;">
+                        <div style="font-family: 'Playfair Display', serif; font-weight: 700; color: var(--blue-900); font-size: 1.05rem;">Total mensual con 3 correos</div>
+                        <div style="text-align: right; font-family: 'Playfair Display', serif; color: var(--red-500); font-weight: 700; font-size: 1.15rem;">USD 40 a 80</div>
+                        <div style="text-align: right; font-family: 'Playfair Display', serif; color: var(--teal-500); font-weight: 700; font-size: 1.3rem;">USD 18 a 33</div>
+                    </div>
+                </div>
+                <div style="margin-top: 14px; padding: 14px 20px; background: var(--teal-100); border-radius: 10px; font-size: 0.95rem; color: #0F766E; border-left: 3px solid var(--teal-500);">
+                    <strong>Ahorro estimado: entre 50% y 60% al mes</strong> — y con mejor calidad
+                    en cada cosa (hosting más rápido + correos con la potencia de Gmail).
+                </div>
+
+                <!-- FLUJO DE MIGRACIÓN -->
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--blue-900); margin: 36px 0 16px; font-weight: 600;">
+                    Cómo hacemos el cambio (7 días, sin caídas)
+                </h3>
+                <div style="background: var(--white); border-radius: 14px; overflow: hidden; border: 1px solid var(--gray-200);">
+                    <div style="padding: 16px 24px; border-bottom: 1px solid var(--gray-100); display: flex; gap: 16px; align-items: start;">
+                        <div style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--blue-100); color: var(--blue-700); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.88rem;">1</div>
+                        <div>
+                            <strong style="color: var(--blue-900);">Día 1-2 · Auditoría del proveedor actual</strong><br>
+                            <span style="color: var(--gray-600); font-size: 0.93rem;">Me das acceso al panel actual, reviso qué hay exactamente (hosting, cuántos correos, backups, archivos importantes).</span>
+                        </div>
+                    </div>
+                    <div style="padding: 16px 24px; border-bottom: 1px solid var(--gray-100); display: flex; gap: 16px; align-items: start;">
+                        <div style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--blue-100); color: var(--blue-700); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.88rem;">2</div>
+                        <div>
+                            <strong style="color: var(--blue-900);">Día 2-3 · Verificación del dominio en NIC.ar</strong><br>
+                            <span style="color: var(--gray-600); font-size: 0.93rem;">Confirmo que el dominio cmprosam.com.ar esté a nombre de PROSAM (no del proveedor de hosting). Si está a nombre del proveedor, lo recuperamos antes de continuar.</span>
+                        </div>
+                    </div>
+                    <div style="padding: 16px 24px; border-bottom: 1px solid var(--gray-100); display: flex; gap: 16px; align-items: start;">
+                        <div style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--blue-100); color: var(--blue-700); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.88rem;">3</div>
+                        <div>
+                            <strong style="color: var(--blue-900);">Día 3-4 · Creamos las cuentas nuevas a tu nombre</strong><br>
+                            <span style="color: var(--gray-600); font-size: 0.93rem;">Vercel (hosting) + Google Workspace (correos) — todo con tu email y CUIT de PROSAM. Vos tenés el usuario y contraseña principal; a mí me das acceso como colaborador.</span>
+                        </div>
+                    </div>
+                    <div style="padding: 16px 24px; border-bottom: 1px solid var(--gray-100); display: flex; gap: 16px; align-items: start;">
+                        <div style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--blue-100); color: var(--blue-700); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.88rem;">4</div>
+                        <div>
+                            <strong style="color: var(--blue-900);">Día 4-5 · Landing básica online + correos funcionando</strong><br>
+                            <span style="color: var(--gray-600); font-size: 0.93rem;">En paralelo subo la landing y configuro los correos nuevos. Cambio los DNS en NIC.ar para que el dominio apunte al hosting nuevo.</span>
+                        </div>
+                    </div>
+                    <div style="padding: 16px 24px; border-bottom: 1px solid var(--gray-100); display: flex; gap: 16px; align-items: start;">
+                        <div style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--blue-100); color: var(--blue-700); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.88rem;">5</div>
+                        <div>
+                            <strong style="color: var(--blue-900);">Día 5-6 · Migración de correos viejos</strong><br>
+                            <span style="color: var(--gray-600); font-size: 0.93rem;">Si querés conservar los mensajes antiguos, los traigo al Gmail nuevo. Cero correos perdidos.</span>
+                        </div>
+                    </div>
+                    <div style="padding: 16px 24px; display: flex; gap: 16px; align-items: start; background: linear-gradient(135deg, var(--teal-100), transparent);">
+                        <div style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--teal-500); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.88rem;">✓</div>
+                        <div>
+                            <strong style="color: var(--blue-900);">Día 7 (28/4) · Todo operativo — cancelás hosting viejo</strong><br>
+                            <span style="color: var(--gray-600); font-size: 0.93rem;">Cuando verificamos que la web carga bien y los correos funcionan, das de baja el hosting anterior. El 30/4 no renovás nada y ya estás ahorrando.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PREGUNTAS URGENTES -->
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--blue-900); margin: 36px 0 12px; font-weight: 600;">
+                    Para arrancar, necesito saber esto de tu parte
+                </h3>
+                <p style="margin-bottom: 18px;">Contestá lo que puedas — lo que no sepas, lo averiguamos juntas:</p>
+
+                <div style="display: grid; grid-template-columns: 1fr; gap: 12px;">
+                    <div style="padding: 16px 20px; background: var(--red-100); border-radius: 10px; border-left: 3px solid var(--red-500);">
+                        <strong style="color: #991B1B; display: block; margin-bottom: 4px;">1. ¿Con qué empresa tenés contratado el hosting actual?</strong>
+                        <span style="font-size: 0.9rem; color: var(--gray-700);">Si no te acordás el nombre, fijate en los últimos mails de facturación o en el panel donde administrás el sitio actual.</span>
+                    </div>
+                    <div style="padding: 16px 20px; background: var(--red-100); border-radius: 10px; border-left: 3px solid var(--red-500);">
+                        <strong style="color: #991B1B; display: block; margin-bottom: 4px;">2. ¿Tenés correos @cmprosam.com.ar funcionando?</strong>
+                        <span style="font-size: 0.9rem; color: var(--gray-700);">¿Cuántos hay activos? ¿Quiénes los usan (recepción, administración, dirección, profesionales)?</span>
+                    </div>
+                    <div style="padding: 16px 20px; background: var(--red-100); border-radius: 10px; border-left: 3px solid var(--red-500);">
+                        <strong style="color: #991B1B; display: block; margin-bottom: 4px;">3. ¿Cuánto estás pagando hoy por mes o por año?</strong>
+                        <span style="font-size: 0.9rem; color: var(--gray-700);">Así podemos calcular el ahorro exacto. Si tenés un mail o factura a mano, mejor.</span>
+                    </div>
+                    <div style="padding: 16px 20px; background: var(--red-100); border-radius: 10px; border-left: 3px solid var(--red-500);">
+                        <strong style="color: #991B1B; display: block; margin-bottom: 4px;">4. ¿El dominio cmprosam.com.ar está a nombre de PROSAM o del proveedor?</strong>
+                        <span style="font-size: 0.9rem; color: var(--gray-700);">Fijate en NIC.ar con tu CUIT, o mandame un mail de renovación del dominio si lo tenés. Esto es crítico — si está a nombre del proveedor, hay que recuperarlo antes.</span>
+                    </div>
+                    <div style="padding: 16px 20px; background: var(--red-100); border-radius: 10px; border-left: 3px solid var(--red-500);">
+                        <strong style="color: #991B1B; display: block; margin-bottom: 4px;">5. ¿El hosting se renueva automático el 30/4 o ya lo cancelaste?</strong>
+                        <span style="font-size: 0.9rem; color: var(--gray-700);">Si se renueva automático, mejor pausar la renovación hasta que yo termine la migración.</span>
+                    </div>
+                </div>
+
+                <div class="highlight-block" style="margin-top: 24px;">
+                    <strong>Una vez que tengas estas 5 respuestas</strong>, arrancamos
+                    la migración. Si la urgencia del 30/4 aprieta, podemos hacer una
+                    llamada de 15 minutos y resolvemos todo junto.
+                </div>
+            </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="qa-card">
+            <div class="qa-header">
+                <div class="qa-number">3</div>
+                <div class="qa-title-group">
+                    <div class="qa-question">Landing básica</div>
+                    <div class="qa-title">Sitio interino para arrancar con Google Ads</div>
+                </div>
+            </div>
+            <div class="qa-body">
+                <p><strong>Sí, entrego en 5-7 días.</strong> Es una landing simple pero sólida, optimizada para convertir.</p>
+
+                <p>Incluye:</p>
+                <ul>
+                    <li><strong>Portada de bienvenida</strong> al estilo López Ibor (imagen de fondo con un filtro elegante + tu texto arriba) + botón grande de WhatsApp</li>
+                    <li><strong>Información de PROSAM:</strong> quiénes son + qué los diferencia + 30 años de trayectoria</li>
+                    <li><strong>Tarjetas con los 7 servicios</strong> y una descripción corta de cada uno (las páginas individuales de cada servicio vienen en la Fase 2)</li>
+                    <li><strong>Formulario de contacto</strong> con el motivo de la consulta (sacar turno / obras sociales / otros)</li>
+                    <li><strong>Mapa</strong> de Maipú 763 + teléfonos y horarios</li>
+                    <li><strong>Botón flotante de WhatsApp</strong> siempre visible, con un mensaje ya escrito listo para enviar</li>
+                    <li><strong>Sistema de medición de Google</strong> conectado desde el día 1, así sabés exactamente cuánta gente entra, de dónde viene y qué hace en tu web</li>
+                    <li><strong>Configuración médica para Google</strong> — le decimos a Google "esto es una clínica médica en Buenos Aires" para que te muestre a las personas correctas</li>
+                    <li><strong>Adaptada al celular</strong> (7 de cada 10 búsquedas de salud son desde el celular) y carga en menos de 2 segundos</li>
+                </ul>
+
+                <p>Cuando el sitio completo esté listo, esta landing pasa a ser la página principal del sitio grande — sin que los pacientes noten el cambio.</p>
+            </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="qa-card">
+            <div class="qa-header">
+                <div class="qa-number">4</div>
+                <div class="qa-title-group">
+                    <div class="qa-question">Google Ads — control total</div>
+                    <div class="qa-title">Dashboard con tu branding, data en tiempo real</div>
+                </div>
+            </div>
+            <div class="qa-body">
+                <p><strong>Un panel de métricas con la marca de PROSAM</strong>, accesible las 24 horas desde cualquier celular o computadora (en una dirección tuya como cmprosam.com.ar/panel). Vas a ver:</p>
+
+                <div class="grid-2" style="margin: 20px 0;">
+                    <div style="padding: 18px; background: var(--blue-50); border-radius: 10px; border-left: 3px solid var(--blue-500);">
+                        <strong style="color: var(--blue-800); display: block; margin-bottom: 8px;">📊 En tiempo real</strong>
+                        Cuántos pacientes te contactaron hoy (por Google Ads vs. orgánico, o sea, los que llegaron por publicidad y los que llegaron solos), cuánto te costó cada contacto, cuánto estás gastando hoy, qué búsquedas en Google están trayendo pacientes.
+                    </div>
+                    <div style="padding: 18px; background: var(--teal-100); border-radius: 10px; border-left: 3px solid var(--teal-500);">
+                        <strong style="color: #0F766E; display: block; margin-bottom: 8px;">🎯 Datos útiles para decidir</strong>
+                        Qué botón de WhatsApp es el que más consultas genera, qué servicio tiene más demanda, qué obras sociales preguntan más, y hasta cuál es el mejor horario del día para publicitar.
+                    </div>
+                </div>
+
+                <p><strong>¿Cada cuánto se ajustan las campañas?</strong></p>
+                <ul>
+                    <li><strong>Primer mes:</strong> ajustes todas las semanas (es cuando Google aprende qué funciona)</li>
+                    <li><strong>Desde el segundo mes:</strong> ajustes cada 15 días</li>
+                    <li><strong>Reporte mensual:</strong> documento en PDF con los resultados del mes, qué decisiones tomé, qué funcionó y qué hago el mes que viene</li>
+                </ul>
+
+                <div class="note-block">
+                    <strong>Presupuesto para los anuncios (es aparte de mis honorarios):</strong>
+                    entre USD 250 y USD 400 por mes para arrancar. Ese dinero se lo pagás
+                    directo a Google. Con menos de USD 200 por mes no hay suficientes datos
+                    para entender qué está funcionando.
+                </div>
+            </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="qa-card">
+            <div class="qa-header">
+                <div class="qa-number">5</div>
+                <div class="qa-title-group">
+                    <div class="qa-question">Métricas del sitio</div>
+                    <div class="qa-title">Todo trackeado desde el minuto cero</div>
+                </div>
+            </div>
+            <div class="qa-body">
+                <p>Cada acción importante tiene su tracking. Todo en el <strong>mismo dashboard</strong> del punto 4:</p>
+
+                <ul>
+                    <li><strong>Botones WhatsApp:</strong> cada botón tiene un ID único → vas a ver exactamente cuántos clicks vienen del home, de cada landing y del botón flotante</li>
+                    <li><strong>Landings:</strong> conversion rate por landing (visitas → WhatsApp o formulario)</li>
+                    <li><strong>Servicios:</strong> evento trackeado por cada consulta asociado al servicio específico</li>
+                    <li><strong>Formulario:</strong> qué motivo de consulta aparece más (turno / coberturas / obra social)</li>
+                    <li><strong>Origen del tráfico:</strong> Google orgánico, Google Ads, redes, directo</li>
+                </ul>
+
+                <div class="highlight-block">
+                    <strong>Una sola URL</strong>, un solo dashboard, data en vivo. No necesitás Analytics ni Ads por separado — ya te llega todo procesado.
+                </div>
+            </div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="qa-card">
+            <div class="qa-header">
+                <div class="qa-number">6</div>
+                <div class="qa-title-group">
+                    <div class="qa-question">Fases</div>
+                    <div class="qa-title">Ajustes sobre tu propuesta</div>
+                </div>
+            </div>
+            <div class="qa-body">
+                <p><strong>Fase 1 (Lanzamiento):</strong> tu propuesta está perfecta. Agrego 2 cosas por experiencia:</p>
+                <ul>
+                    <li><strong>Google Business Profile optimizado</strong> — te posiciona en búsquedas "psiquiatra CABA" y en Google Maps</li>
+                    <li><strong>Schema médico completo</strong> — le dice a Google e IAs qué tipo de centro sos para que te recomienden</li>
+                </ul>
+
+                <p><strong>Fase 2 (a 3-6 meses):</strong> cuando tengamos data, evaluamos incorporar:</p>
+                <ul>
+                    <li>Bot IA para primera respuesta en WhatsApp (deriva a las chicas, no auto-agenda)</li>
+                    <li>Confirmaciones y recordatorios de turno 24-48hs antes</li>
+                    <li>Cancelaciones y reprogramaciones por WhatsApp</li>
+                    <li>Seguimiento post-consulta y reactivación de inactivos</li>
+                    <li>Recordatorios de cobranza a particulares</li>
+                    <li>CRM centralizado con todos los leads en un lugar</li>
+                </ul>
+
+                <div class="highlight-block">
+                    <strong>Como me dijiste:</strong> sin auto-agendamiento de turnos de psiquiatría, sin facturación de obras sociales. El bot deriva, no decide. Vos y las chicas tienen el control clínico siempre.
+                </div>
+
+                <p>Todo esto ya lo tengo corriendo en mi cliente de Uruguay (Antoá) con Iris Bot + Go High Level + n8n. En la reunión te muestro el ecosistema funcionando.</p>
+
+                <div class="highlight-block" style="margin-top: 20px;">
+                    <strong>Cómo armamos tu CRM + Bot sin que sea complicado ni caro</strong><br><br>
+                    Te doy acceso a una <strong>subcuenta de mi plataforma profesional de CRM</strong>
+                    (Go High Level) — la misma que uso con mis otros clientes. Esto te evita tener que
+                    contratar todo por separado (WhatsApp + CRM + calendario + IA + integraciones), y
+                    lo tenés todo en un solo lugar.<br><br>
+                    <strong>USD 150 por mes — todo incluido:</strong>
+                    <ul style="margin: 12px 0 0 0; padding-left: 20px; list-style: disc;">
+                        <li>CRM completo con pipelines (pacientes en cada etapa)</li>
+                        <li>Número de WhatsApp nativo incluido (sin contratar Twilio aparte)</li>
+                        <li>Agente de inteligencia artificial para primera respuesta</li>
+                        <li>Calendario integrado</li>
+                        <li>Recordatorios y cancelaciones automáticas</li>
+                        <li>Integraciones con Instagram, Facebook y email (todos los mensajes en un solo lugar)</li>
+                        <li>Soporte y ajustes continuos</li>
+                    </ul>
+                    <p style="margin-top: 14px; margin-bottom: 0; font-size: 0.95rem;">
+                        <strong>A futuro:</strong> cuando el bot empiece a atender volumen importante
+                        de consultas, se suma el costo de tokens de IA (lo que el agente "consume"
+                        para pensar cada respuesta) — aparece en la misma factura mensual, estimado
+                        USD 20 a 80 por mes según uso real.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="qa-card">
+            <div class="qa-header">
+                <div class="qa-number">7</div>
+                <div class="qa-title-group">
+                    <div class="qa-question">Pricing</div>
+                    <div class="qa-title">Cotizaciones en USD y ARS</div>
+                </div>
+            </div>
+            <div class="qa-body">
+                <p>Abajo tenés la tabla completa. Tipo de cambio referencia: <strong>1 USD ≈ $1.400 ARS</strong> (se ajusta al dólar del día de facturación). Agregué una columna final con <strong>precio de mercado</strong> para que veas lo que te saldría en otra agencia.</p>
+                <p style="margin-top: 14px;">↓ Ir a <a href="#pricing" style="color: var(--teal-500); font-weight: 600; text-decoration: none;">sección pricing</a>.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- TIMELINE                                        -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="section-compact" style="background: var(--blue-50);">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-eyebrow">Hoja de ruta</div>
+            <h2 class="section-title">Cómo se desarrolla todo</h2>
+            <p class="section-subtitle">
+                Entregables concretos con fechas. Vos sabés siempre qué se está haciendo y cuándo.
+            </p>
+        </div>
+
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+
+            <div class="tl-item urgent">
+                <div class="tl-marker">!</div>
+                <div class="tl-content">
+                    <div class="tl-week">Esta semana · URGENTE</div>
+                    <div class="tl-title">Migración hosting + setup técnico</div>
+                    <div class="tl-desc">
+                        Acceso al dominio, setup en nuevo hosting, apuntado de DNS,
+                        migración de mails (si aplica). En paralelo arranco con la landing básica.
+                    </div>
+                    <div class="tl-tags">
+                        <span class="tl-tag">Antes del 30/4</span>
+                        <span class="tl-tag">Crítico</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tl-item">
+                <div class="tl-marker">1</div>
+                <div class="tl-content">
+                    <div class="tl-week">Semana 1 · Entrega landing básica</div>
+                    <div class="tl-title">Landing live + Google Ads setup</div>
+                    <div class="tl-desc">
+                        Landing funcional online, Google Analytics 4 configurado,
+                        cuenta Google Ads creada, Google Business Profile optimizado.
+                    </div>
+                    <div class="tl-tags">
+                        <span class="tl-tag">Live en cmprosam.com.ar</span>
+                        <span class="tl-tag">Tracking activo</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tl-item">
+                <div class="tl-marker">2</div>
+                <div class="tl-content">
+                    <div class="tl-week">Semana 2 · Arrancamos Ads</div>
+                    <div class="tl-title">Primeras campañas Google Ads</div>
+                    <div class="tl-desc">
+                        Arrancamos con 2-3 campañas (servicios prioritarios).
+                        Dashboard live funcionando con tu branding.
+                    </div>
+                    <div class="tl-tags">
+                        <span class="tl-tag">Primeros leads pagados</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tl-item">
+                <div class="tl-marker">3</div>
+                <div class="tl-content">
+                    <div class="tl-week">Semanas 3-4 · Sitio completo</div>
+                    <div class="tl-title">Desarrollo de las 7 landings + blog</div>
+                    <div class="tl-desc">
+                        Home con 4 ítems de menú, 7 landings de servicios,
+                        coberturas, contacto con formulario, blog con CMS.
+                    </div>
+                    <div class="tl-tags">
+                        <span class="tl-tag">Estética López Ibor</span>
+                        <span class="tl-tag">Schema médico completo</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tl-item">
+                <div class="tl-marker">4</div>
+                <div class="tl-content">
+                    <div class="tl-week">Semana 5 · Entrega y revisión</div>
+                    <div class="tl-title">Sitio completo live + panel admin</div>
+                    <div class="tl-desc">
+                        Sitio completo online, capacitación para que edites desde el panel,
+                        primer artículo de blog, SEO interno completo.
+                    </div>
+                    <div class="tl-tags">
+                        <span class="tl-tag">Capacitación incluida</span>
+                        <span class="tl-tag">Docs de uso</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tl-item">
+                <div class="tl-marker">5</div>
+                <div class="tl-content">
+                    <div class="tl-week">Semana 6 · Ajustes finales</div>
+                    <div class="tl-title">Feedback, pulido y cierre</div>
+                    <div class="tl-desc">
+                        Ronda de feedback, ajustes finales de diseño y contenido,
+                        entrega formal del proyecto. Dashboard de Ads ya con primera data real.
+                    </div>
+                    <div class="tl-tags">
+                        <span class="tl-tag">Entrega final</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- PRICING                                         -->
+<!-- ═══════════════════════════════════════════════ -->
+<section id="pricing" class="section pricing-section">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-eyebrow">Inversión</div>
+            <h2 class="section-title">Pricing — USD y ARS</h2>
+            <p class="section-subtitle">
+                Transparencia total. Cada ítem cotizado por separado. La última columna te muestra
+                <strong>cuánto te cobraría otra agencia</strong> por lo mismo, así ves el ahorro real.
+            </p>
+        </div>
+
+        <div class="pricing-table">
+            <div class="pricing-row-head">
+                <div>Concepto</div>
+                <div>USD</div>
+                <div>ARS</div>
+                <div>Plazo</div>
+                <div>Precio de mercado</div>
+            </div>
+
+            <div class="pricing-row urgent-row">
+                <div>
+                    <div class="pricing-item-name">Migración del hosting actual</div>
+                    <div class="pricing-item-desc">Antes del 30/4 — sin cargo separado, incluido en el trabajo de la landing básica</div>
+                </div>
+                <div class="pricing-amount" data-label="USD">Sin cargo</div>
+                <div class="pricing-amount secondary" data-label="ARS">Sin cargo</div>
+                <div class="pricing-amount secondary" data-label="Plazo">5 días</div>
+                <div class="pricing-market" data-label="Mercado">USD 100 a 200<span class="pricing-market-note">migración técnica en agencia</span></div>
+            </div>
+
+            <div class="pricing-row">
+                <div>
+                    <div class="pricing-item-name">Landing básica</div>
+                    <div class="pricing-item-desc">Reemplaza la web actual · Botón flotante de WhatsApp · Sistema de medición de Google conectado · Configuración médica para Google · Entrega en 5-7 días</div>
+                </div>
+                <div class="pricing-amount" data-label="USD">USD 150</div>
+                <div class="pricing-amount secondary" data-label="ARS">$210.000</div>
+                <div class="pricing-amount secondary" data-label="Plazo">5-7 días</div>
+                <div class="pricing-market" data-label="Mercado">USD 400 a 800<span class="pricing-market-note">landing custom en agencia</span></div>
+            </div>
+
+            <div class="pricing-row highlight">
+                <div>
+                    <div class="pricing-item-name">Sitio completo — 7 páginas + Blog + Panel para editar</div>
+                    <div class="pricing-item-desc">Página principal + 1 página por cada servicio (optimizada para Google) + Blog con panel para escribir artículos + Configuración médica completa + Preparación para que te recomienden las IAs + Manual de marca + Capacitación para que edites sola</div>
+                </div>
+                <div class="pricing-amount" data-label="USD">USD 600</div>
+                <div class="pricing-amount secondary" data-label="ARS">$840.000</div>
+                <div class="pricing-amount secondary" data-label="Plazo">6 semanas</div>
+                <div class="pricing-market" data-label="Mercado">USD 1.500 a 3.000<span class="pricing-market-note">sitio 7 páginas + blog en agencia</span></div>
+            </div>
+
+            <div class="pricing-row">
+                <div>
+                    <div class="pricing-item-name">Mantenimiento mensual del sitio</div>
+                    <div class="pricing-item-desc">Hosting + base de datos + certificado de seguridad (HTTPS) + renovación del dominio · Todo incluido, un solo pago mensual</div>
+                </div>
+                <div class="pricing-amount" data-label="USD">USD 15<span style="font-size: 0.8rem; color: var(--gray-500);">/mes</span></div>
+                <div class="pricing-amount secondary" data-label="ARS">$21.000/mes</div>
+                <div class="pricing-amount secondary" data-label="Plazo">Recurrente</div>
+                <div class="pricing-market" data-label="Mercado">USD 30 a 60/mes<span class="pricing-market-note">hosting profesional equivalente</span></div>
+            </div>
+
+            <div class="pricing-row">
+                <div>
+                    <div class="pricing-item-name">Google Ads — puesta en marcha</div>
+                    <div class="pricing-item-desc">Creación de cuenta · Investigación de qué busca la gente en Google · Configuración para medir resultados · 3 campañas armadas · Panel de métricas con tu marca</div>
+                </div>
+                <div class="pricing-amount" data-label="USD">USD 200</div>
+                <div class="pricing-amount secondary" data-label="ARS">$280.000</div>
+                <div class="pricing-amount secondary" data-label="Plazo">1 semana</div>
+                <div class="pricing-market" data-label="Mercado">USD 400 a 600<span class="pricing-market-note">setup Ads en agencia</span></div>
+            </div>
+
+            <div class="pricing-row">
+                <div>
+                    <div class="pricing-item-name">Google Ads — gestión mensual</div>
+                    <div class="pricing-item-desc">Ajustes semanales el primer mes, después cada 15 días · Reporte mensual en PDF · Panel de métricas disponible las 24 horas</div>
+                </div>
+                <div class="pricing-amount" data-label="USD">USD 180<span style="font-size: 0.8rem; color: var(--gray-500);">/mes</span></div>
+                <div class="pricing-amount secondary" data-label="ARS">$252.000/mes</div>
+                <div class="pricing-amount secondary" data-label="Plazo">Recurrente</div>
+                <div class="pricing-market" data-label="Mercado">USD 300 a 500/mes<span class="pricing-market-note">gestión Ads en agencia</span></div>
+            </div>
+
+            <div class="pricing-row">
+                <div>
+                    <div class="pricing-item-name">Fase 2 — CRM + Bot de WhatsApp (cuando esté listo)</div>
+                    <div class="pricing-item-desc">
+                        <strong>Todo incluido en un solo pago mensual:</strong> CRM completo + Número WhatsApp nativo + Agente IA para primera respuesta + Calendario + Recordatorios y cancelaciones automáticas + Integraciones con redes sociales + Pipelines de pacientes + Soporte continuo.<br>
+                        <span style="color: var(--amber-500); font-weight: 600; margin-top: 6px; display: inline-block;">+ Costo futuro cuando escale:</span> tokens de IA cuando el bot empiece a atender volumen real (USD 20 a 80/mes, se suman a tu factura).
+                    </div>
+                </div>
+                <div class="pricing-amount" data-label="USD">USD 150<span style="font-size: 0.8rem; color: var(--gray-500);">/mes</span></div>
+                <div class="pricing-amount secondary" data-label="ARS">$210.000/mes</div>
+                <div class="pricing-amount secondary" data-label="Plazo">Recurrente</div>
+                <div class="pricing-market" data-label="Mercado">USD 300 a 500/mes<span class="pricing-market-note">CRM + WhatsApp + IA por separado</span></div>
+            </div>
+
+            <div class="pricing-total-row">
+                <div class="pricing-total-label">Total Fase 1 — inversión inicial</div>
+                <div class="pricing-total-amount">USD 950</div>
+                <div class="pricing-total-amount" style="font-size: 1.1rem; color: var(--gray-600);">$1.330.000</div>
+                <div style="font-size: 0.85rem; color: var(--gray-600); font-weight: 600;">Distribuido 6 semanas</div>
+                <div class="pricing-market" style="font-size: 0.88rem; color: var(--gray-500);" data-label="Mercado">USD 2.300 a 4.400<span class="pricing-market-note">mismo alcance en agencia</span></div>
+            </div>
+        </div>
+
+        <div class="pricing-notes">
+            <p><strong>💡 Orden sugerido de implementación:</strong></p>
+            <ul style="margin-top: 10px; padding-left: 24px;">
+                <li><strong>1ro (esta semana):</strong> Landing básica (USD 150) → resuelve el problema urgente del 30/4</li>
+                <li><strong>2do (semanas 3-6):</strong> Sitio completo (USD 600) → 7 páginas + blog + panel de edición</li>
+                <li><strong>3ro (cuando tengas sitio listo):</strong> Google Ads — puesta en marcha + gestión (USD 200 + USD 180/mes)</li>
+                <li><strong>4to (a los 3-6 meses, si hay volumen):</strong> Fase 2 — CRM + Bot (USD 150/mes)</li>
+            </ul>
+            <p style="margin-top: 18px;"><strong>💡 Condiciones:</strong></p>
+            <ul style="margin-top: 10px; padding-left: 24px;">
+                <li><strong>Forma de pago sugerida:</strong> 50% al inicio de cada etapa, 50% al entregar.</li>
+                <li><strong>Presupuesto de anuncios de Google Ads:</strong> NO incluido. Recomendado entre USD 250 y USD 400 por mes aparte, pagado directo por vos a Google.</li>
+                <li><strong>Facturación AR:</strong> al tipo de cambio del día + IVA si corresponde.</li>
+                <li><strong>Precio de mercado (última columna):</strong> basado en cotizaciones promedio de agencias argentinas e internacionales (2026). Trabajo como profesional independiente, por eso el precio es considerablemente menor que el de una agencia tradicional.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- NEXT STEPS — LO QUE NECESITO                    -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="section next-steps">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-eyebrow">Siguiente paso</div>
+            <h2 class="section-title">Lo que necesito de vos</h2>
+            <p class="section-subtitle">
+                Para arrancar de inmediato — agrupado por urgencia y etapa.
+            </p>
+        </div>
+
+        <div class="needs-grid">
+            <!-- URGENTE -->
+            <div class="need-card urgent">
+                <div class="need-card-label">🔴 Crítico · Esta semana</div>
+                <div class="need-card-title">Para la migración del hosting</div>
+                <ul class="need-list">
+                    <li>Nombre de la empresa de hosting actual</li>
+                    <li>Acceso (usuario + contraseña) al panel del hosting actual</li>
+                    <li>Acceso a NIC.ar donde está registrado el dominio cmprosam.com.ar (con el CUIT de PROSAM)</li>
+                    <li>Cuántos correos @cmprosam.com.ar hay activos y quién usa cada uno</li>
+                    <li>Monto que estás pagando hoy (para calcular ahorro real)</li>
+                </ul>
+                <div style="margin-top: 14px; padding: 10px 14px; background: rgba(255,255,255,0.1); border-radius: 8px; font-size: 0.82rem; color: rgba(255,255,255,0.9);">
+                    💡 <strong>Todas las cuentas nuevas</strong> (Vercel, Google Workspace) las creamos a tu nombre.
+                </div>
+            </div>
+
+            <!-- LANDING BÁSICA -->
+            <div class="need-card">
+                <div class="need-card-label">📄 Para landing básica</div>
+                <div class="need-card-title">Esta misma semana</div>
+                <ul class="need-list">
+                    <li>Logo actual en mejor calidad posible (luego lo rediseñamos)</li>
+                    <li>Lista de servicios con descripción corta (1-2 párrafos c/u)</li>
+                    <li>Foto del centro — frente o interior (2-3 mínimo)</li>
+                    <li>Obras sociales con las que trabajan</li>
+                    <li>Confirmación del mensaje pre-llenado de WhatsApp</li>
+                </ul>
+            </div>
+
+            <!-- MARCA -->
+            <div class="need-card">
+                <div class="need-card-label">🎨 Manual de marca</div>
+                <div class="need-card-title">Primeras 2 semanas</div>
+                <ul class="need-list">
+                    <li>Como no tenés manual, te propongo <strong>3 direcciones visuales</strong> (paleta + tipografía + logo refresh) — elegís una</li>
+                    <li>Referencia López Ibor ya validada en el brief</li>
+                    <li>La paleta queda cerrada al definir el logo nuevo</li>
+                </ul>
+            </div>
+
+            <!-- SITIO COMPLETO -->
+            <div class="need-card">
+                <div class="need-card-label">🏥 Para sitio completo</div>
+                <div class="need-card-title">Semanas 2-3</div>
+                <ul class="need-list">
+                    <li>Textos de las 7 landings de servicios (dijiste que los tenés avanzados)</li>
+                    <li>Fotos del centro — interior de consultorios, recepción (8-10 fotos)</li>
+                    <li>Confirmación pendientes del brief: TDAH, terapia de pareja, disponibilidad psiquiatría privada</li>
+                    <li>Headline del hero (depende de definición de marca)</li>
+                </ul>
+            </div>
+
+            <!-- GOOGLE ADS -->
+            <div class="need-card">
+                <div class="need-card-label">🎯 Para Google Ads</div>
+                <div class="need-card-title">Antes de activar campañas</div>
+                <ul class="need-list">
+                    <li>Confirmar presupuesto mensual de ads (recomendado entre USD 250 y USD 400)</li>
+                    <li>Servicios prioritarios a promocionar primero (1-3, no todos)</li>
+                    <li>Google Business Profile — si no está creado, lo hago yo con un acceso que me des</li>
+                </ul>
+            </div>
+
+            <!-- BLOG SEO -->
+            <div class="need-card">
+                <div class="need-card-label">📝 Panel guiado de blog</div>
+                <div class="need-card-title">Te lo dejo listo al entregar</div>
+                <ul class="need-list">
+                    <li>El panel te sugiere temas priorizados por volumen SEO</li>
+                    <li>Te guía con estructura, longitud y palabras clave óptimas</li>
+                    <li>SEO Score automático en cada artículo (como viste en el demo)</li>
+                    <li>Tu solo trabajo: escribir el contenido clínico</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-wrap">
+            <h3>¿Damos el paso?</h3>
+            <p>
+                Si tenés ok a esta propuesta, arrancamos ya con la migración del hosting
+                para no perder el 30/4. Coordinamos la reunión para ver todo en vivo
+                y respondemos cualquier duda que te quede.
+            </p>
+            <a href="https://wa.me/5491123030554?text=Hola%20Juan%2C%20revis%C3%A9%20la%20re-propuesta%20y%20quer%C3%ADa%20coordinar%20los%20siguientes%20pasos." class="btn-cta">
+                Coordinar reunión por WhatsApp →
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- FOOTER                                          -->
+<!-- ═══════════════════════════════════════════════ -->
+<footer>
+    <div class="container">
+        <div class="brand">Propuesta preparada para Centro Médico PROSAM</div>
+        <div>Abril 2026 · Versión ajustada tras consultas</div>
+        <div class="sig">
+            Juan Larrarte — Desarrollo web · Automatización IA · Google Ads<br>
+            Documento privado — no publicar ni distribuir
+        </div>
+    </div>
+</footer>
+
+<script>
+    function switchDemo(view) {
+        const blogView = document.getElementById('view-blog');
+        const servicioView = document.getElementById('view-servicio');
+        const tabs = document.querySelectorAll('.demo-tab');
+        const navBlog = document.getElementById('nav-blog');
+        const navServicio = document.getElementById('nav-servicio');
+        const bc = document.getElementById('bc-active');
+
+        tabs.forEach(t => t.classList.remove('active'));
+
+        if (view === 'blog') {
+            blogView.style.display = 'block';
+            servicioView.style.display = 'none';
+            tabs[0].classList.add('active');
+            navBlog.classList.add('active');
+            navServicio.classList.remove('active');
+            bc.textContent = 'Blog';
+        } else {
+            blogView.style.display = 'none';
+            servicioView.style.display = 'block';
+            tabs[1].classList.add('active');
+            navServicio.classList.add('active');
+            navBlog.classList.remove('active');
+            bc.textContent = 'Servicios › Evaluación Neurocognitiva';
+        }
+    }
+
+    // Init
+    document.getElementById('nav-blog').classList.add('active');
+</script>
+
+</body>
+</html>
